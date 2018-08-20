@@ -1,0 +1,56 @@
+$plotery-reference-color: black !default;
+$plotery-grid-color: black !default;
+$plotery-major-opacity: 0.3 !default;
+$plotery-minor-opacity: 0.15 !default;
+
+@mixin plotery-axis(
+	$reference-color: $plotery-reference-color,
+	$grid-color: $plotery-grid-color,
+	$major-opacity: $plotery-major-opacity,
+	$minor-opacity: $plotery-minor-opacity
+) {
+	.axis {
+		.grid {
+			fill: none;
+			stroke-width: 1px;
+			stroke: $grid-color;
+			stroke-dasharray: 3px;
+			shape-rendering: crispEdges;
+
+			&.major {
+				stroke-opacity: $major-opacity;
+			}
+
+			&.minor {
+				stroke-opacity: $minor-opacity;
+			}
+		}
+
+		.reference {
+			fill: none;
+			stroke-width: 1px;
+			stroke: $reference-color;
+			shape-rendering: crispEdges;
+		}
+
+		&.y.start .labels {
+			text-anchor: end;
+			transform: translate(-5px, 6px);
+		}
+
+		&.y.end .labels {
+			text-anchor: start;
+			transform: translate(calc(100% + 5px), 6px);
+		}
+
+		&.x.start .labels {
+			text-anchor: middle;
+			transform: translate(0, calc(-8px - 100%));
+		}
+
+		&.x.end .labels {
+			text-anchor: middle;
+			transform: translate(0, 20px);
+		}
+	}
+}

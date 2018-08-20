@@ -1,0 +1,73 @@
+import { h, Component } from 'preact';
+
+export class CartesianAxis extends Component {
+	get type() {
+		return this.props.type;
+	}
+
+	get scale() {
+		return this.props.scale;
+	}
+
+	get reference() {
+		return this.props.reference;
+	}
+
+	componentDidMount() {
+		this.props.registerAxis(this);
+	}
+
+	_getPosition() {
+		return this.props.position || (this.type === 'x' ? 'end' : 'start');
+	}
+
+	_calcPath(values) {
+		const { width, height } = this.props.rect;
+		const serializer = this.type === 'x' ? x => `M${x},0V${height}` : x => `M0,${x}H${width}`;
+		return values.map(serializer).join('');
+	}
+
+	_renderLabels(labels, ticks, positions) {
+		if (labels == null) {
+			labels = ticks;
+		}
+		else if (!Array.isArray(labels)) {
+			labels = ticks.map(labels);
+		}
+		if (labels.length !== positions.length) {
+			return null;
+		}
+		if (this.type === 'x') {
+			const { height } = this.props.rect;
+			return (
+				<g className="labels">
+					{labels.map((x, index) => <text x={positions[index]} y={height}>{x}</text>)}
+				</g>
+			);
+		}
+		return (
+			<g className="labels">
+				{labels.map((x, index) => <text x="0" y={positions[index]}>{x}</text>)}
+			</g>
+		);
+	}
+
+	render() {
+		const { rect, hide, min, max, reference, ticks, major, minor, labels } = this.props;
+		if (hide || min === max) {
+			return null;
+		}
+		const majorPos = ticks.major.map(x => this.scale(x));
+		const minorPos = ticks.minor.map(x => this.scale(x));
+		const refPos = this.scale(reference);
+		const drawRef = 0 <= refPos && refPos <= (this.type === 'x' ? rect.width : rect.height);
+		return (
+			<g className={`axis ${this.type} ${this._getPosition()}`}>
+				{major && <path className="grid major" d={this._calcPath(majorPos)} />}
+				{minor && <path className="grid minor" d={this._calcPath(minorPos)} />}
+				{drawRef && <path className="reference" d={this._calcPath([refPos])} />}
+				{this._renderLabels(labels, ticks.major, majorPos)}
+			</g>
+		);
+	}
+}

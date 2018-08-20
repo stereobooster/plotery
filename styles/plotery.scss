@@ -1,0 +1,25 @@
+$plotery-include-classes: true !default;
+$plotery-margin: 50px !default;
+
+@import 'axis';
+@import 'plot';
+@import 'zoom';
+
+@mixin plotery($margin: $plotery-margin) {
+	.plotery {
+		@include plotery-plot();
+		@include plotery-axis();
+		@include plotery-zoom();
+
+		margin: $margin;
+
+		> svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+@if $plotery-include-classes {
+	@include plotery();
+}
