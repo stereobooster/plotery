@@ -8,14 +8,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-There are no changes yet.
+### Added
+
+- Logaritmic axis - `LogAxis`.
+- Add `series` prop to plot's classes to enable CSS selecting.
+- Alternate plot's colors.
+
+
+### Fixed
+
+- Remove oversighted console.log on resize.
+- Don't draw plots when some axis missing.
+- Fix handling of missing data.
 
 
 ## [0.1.0] - 2018-08-20
 
 ### Added
 
-- initial version
+- Initial version.
 
 
 [Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v0.1.0
