@@ -23,7 +23,6 @@ export class Chart extends Component {
 
 	@bind
 	_resizeHandler() {
-		console.log('resize');
 		this._updateRect();
 	}
 
