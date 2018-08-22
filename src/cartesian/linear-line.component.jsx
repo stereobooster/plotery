@@ -22,8 +22,9 @@ export class LinearLine extends Component {
 		}
 		const scaled = this._scale(points);
 		const path = this._calcPath(scaled);
+		const className = ['plot', series].filter(x => x).join(' ');
 		return (
-			<svg className="plot" width={rect.width} height={rect.height}>
+			<svg className={className} width={rect.width} height={rect.height}>
 				{area && <path key="area" className="area" d={this._closePath(scaled, path)} />}
 				{line !== false && <path key="line" className="line" d={path} />}
 			</svg>

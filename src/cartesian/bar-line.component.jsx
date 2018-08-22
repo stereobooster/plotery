@@ -18,8 +18,9 @@ export class BarLine extends Component {
 		}
 		const scaled = this._scale(points);
 		const path = this._calcPath(scaled);
+		const className = ['plot', series].filter(x => x).join(' ');
 		return (
-			<svg className="plot" width={rect.width} height={rect.height}>
+			<svg className={className} width={rect.width} height={rect.height}>
 				<path className="bars" d={path} />
 			</svg>
 		);
