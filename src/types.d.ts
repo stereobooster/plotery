@@ -74,6 +74,25 @@ export declare class LinearAxis extends Component<LinearAxisProps> {
 	render(): ComponentChild;
 }
 
+export interface LogAxisProps extends Partial<ChartAttributes> {
+	type: 'x' | 'y';
+	position?: 'start' | 'end';
+	hide?: boolean;
+	min: number;
+	max: number;
+	reference?: number;
+	step?: number;
+	divisor?: number;
+	major?: boolean;
+	minor?: boolean;
+	labels?: string[] | { (tick: number): string };
+}
+
+export declare class LogAxis extends Component<LogAxisProps> {
+	scale(value: number, inverse?: boolean): number;
+	render(): ComponentChild;
+}
+
 export interface LinearLineProps extends Partial<ChartAttributes> {
 	series?: string;
 	line?: boolean;

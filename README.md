@@ -96,8 +96,6 @@ Example of multiple axis:
 
 Define linear cartesian axis.
 
-> Note: You can put `LinearAxis` after chart lines instead of before to draw it in front of lines.
-
 #### Properties
 
 - `type: 'x' | 'y'` - type of axis.
@@ -108,6 +106,26 @@ Define linear cartesian axis.
 - `reference: number` (default: 0) - reference value (origin).
 - `step: number` (optional) - Step between consequence major ticks.
 - `divisor: number` (default: 5) - how many minor ticks are in one major tick.
+- `major: boolean` (default: false) - show major grid.
+- `minor: boolean` (default: false) - show minor grid.
+- `labels: string[] | { (tick: number): string }` (default: x => x) - labels for axis. Array of label strings must have
+  same length as major ticks.
+
+
+### `LogAxis`
+
+Define logarithmic cartesian axis.
+
+#### Properties
+
+- `type: 'x' | 'y'` - type of axis.
+- `position: 'start' | 'end'` (default: 'start' for `type` == 'x', 'end' for `type` == 'y') - position of axis labels.
+- `hide: boolean` (default: false) - Don't display axis (it will be used only for coordinate system).
+- `min: number` - low axis limit.
+- `max: number` - high axis limit.
+- `reference: number` (default: 1) - reference value (origin).
+- `step: number` (optional) - Step between consequence major ticks.
+- `divisor: number` (default: 9) - how many minor ticks are in one major tick.
 - `major: boolean` (default: false) - show major grid.
 - `minor: boolean` (default: false) - show minor grid.
 - `labels: string[] | { (tick: number): string }` (default: x => x) - labels for axis. Array of label strings must have
@@ -165,7 +183,7 @@ Example of usage:
 
 Cartesian charts:
 
-- `LogarithmAxis` 
+- ~~`LogarithmAxis`~~ - implemented as `LogAxis`
 - `CardinalLine` - like `LinearLine`, but with smoothing.
 
 Polar charts:
