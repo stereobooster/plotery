@@ -1,5 +1,11 @@
 $plotery-include-classes: true !default;
 $plotery-margin: 50px !default;
+$plotery-series-colors: (
+	#e02060,
+	#2060e0,
+	#e06020,
+	#20e060
+) !default;
 
 @import 'axis';
 @import 'plot';
@@ -10,6 +16,13 @@ $plotery-margin: 50px !default;
 		@include plotery-plot();
 		@include plotery-axis();
 		@include plotery-zoom();
+
+		@for $i from 0 to length($plotery-series-colors) {
+			@include plotery-plot-color(
+				'.plot:nth-of-type(4n+#{$i + 1})',
+				nth($plotery-series-colors, $i + 1)
+			);
+		}
 
 		margin: $margin;
 

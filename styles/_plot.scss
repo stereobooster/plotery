@@ -10,10 +10,13 @@ $plotery-bars-width: 10px !default;
 	$bars-width: $plotery-bars-width
 ) {
 	.plot {
-		.line {
+		.line, .bars {
 			fill: none;
-			stroke-width: $line-width;
 			stroke: $line-color;
+		}
+
+		.line {
+			stroke-width: $line-width;
 		}
 
 		.area {
@@ -22,9 +25,22 @@ $plotery-bars-width: 10px !default;
 		}
 
 		.bars {
-			fill: none;
 			stroke-width: $bars-width;
+		}
+	}
+}
+
+@mixin plotery-plot-color(
+	$plot-selector: '.plot',
+	$line-color: $plotery-line-color
+) {
+	#{$plot-selector} {
+		.line, .bars {
 			stroke: $line-color;
+		}
+
+		.area {
+			fill: $line-color;
 		}
 	}
 }
