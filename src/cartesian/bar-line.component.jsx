@@ -11,9 +11,9 @@ export class BarLine extends Component {
 	}
 
 	render() {
-		const { data, rect, series } = this.props;
-		if (!points || !points.length) {
+		const { data, rect, axes, series } = this.props;
 		const points = data && (series ? data[series] : data);
+		if (!points || !points.length || !axes.x || !axes.y) {
 			return null;
 		}
 		const scaled = this._scale(points);

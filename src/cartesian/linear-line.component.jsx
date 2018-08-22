@@ -15,9 +15,9 @@ export class LinearLine extends Component {
 	}
 
 	render() {
-		const { data, rect, series, line, area } = this.props;
-		if (!points || !points.length) {
+		const { data, rect, axes, series, line, area } = this.props;
 		const points = data && (series ? data[series] : data);
+		if (!points || !points.length || !axes.x || !axes.y) {
 			return null;
 		}
 		const scaled = this._scale(points);
