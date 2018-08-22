@@ -23,25 +23,14 @@ export class LinearAxis extends Component {
 
 	@bind
 	scale(value, inverse = false) {
-		const { rect, min, max } = this.props;
+		const { rect, type, min, max } = this.props;
 		if (inverse) {
-			let normalized;
-			if (this.props.type === 'x') {
-				normalized = value / rect.width;
-			}
-			else {
-				normalized = 1 - value / rect.height;
-			}
+			const normalized = type === 'x' ? value / rect.width : 1 - value / rect.height;
 			return normalized * (max - min) + min;
 		}
 		else {
 			const normalized = (value - min) / (max - min);
-			if (this.props.type === 'x') {
-				return rect.width * normalized;
-			}
-			else {
-				return rect.height * (1 - normalized);
-			}
+			return type === 'x' ? normalized * rect.width : (1 - normalized) * rect.height;
 		}
 	}
 
@@ -62,12 +51,8 @@ export class LinearAxis extends Component {
 		const decimals = Math.max(0, 1 - Math.floor(Math.log10(minorStep)));
 		let current = Math.ceil((min - reference) / minorStep) * minorStep + reference;
 		while (current <= max) {
-			if (Math.round(10 * (current - reference) / step) % 10 === 0) {
-				ticks.major.push(current);
-			}
-			else {
-				ticks.minor.push(current);
-			}
+			const isMajor = Math.round(10 * (current - reference) / step) % 10 === 0;
+			(isMajor ? ticks.major : ticks.minor).push(current);
 			current = +(current + minorStep).toFixed(decimals);
 		}
 		return ticks;

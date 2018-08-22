@@ -30,10 +30,8 @@ export class Zoom extends Component {
 	}
 
 	_getRelativeCoords(event) {
-		return [
-			event.pageX - this.props.rect.left,
-			event.pageY - this.props.rect.top
-		];
+		const { left, top } = this.props.rect;
+		return [event.pageX - left, event.pageY - top];
 	}
 
 	@bind
@@ -49,23 +47,24 @@ export class Zoom extends Component {
 
 	@bind
 	_handlePointerUp(event) {
-		if (this.props.onZoom) {
+		const { onZoom, restrict } = this.props;
+		if (onZoom) {
 			if (this.state.end) {
 				const limits = this._scaleCoords();
-				switch (this.props.restrict) {
+				switch (restrict) {
 					case 'x':
-						this.props.onZoom([limits[0], limits[2]]);
+						onZoom([limits[0], limits[2]]);
 						break;
 					case 'y':
-						this.props.onZoom([limits[1], limits[3]]);
+						onZoom([limits[1], limits[3]]);
 						break;
 					default:
-						this.props.onZoom(limits);
+						onZoom(limits);
 						break;
 				}
 			}
 			else {
-				this.props.onZoom(null);
+				onZoom(null);
 			}
 		}
 		this.setState({ begin: null, end: null });
