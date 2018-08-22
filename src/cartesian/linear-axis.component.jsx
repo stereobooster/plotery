@@ -59,22 +59,15 @@ export class LinearAxis extends Component {
 	}
 
 	render() {
-		const { min, max, reference, step, divisor } = this.props;
+		const { min, max, reference, step, divisor, ...others } = this.props;
 		return (
 			<CartesianAxis
-					hide={this.props.hide}
-					type={this.props.type}
-					position={this.props.position}
 					min={min}
 					max={max}
 					scale={this.scale}
 					reference={reference || 0}
 					ticks={this._generateTicks(min, max, step, divisor, reference)}
-					major={this.props.major}
-					minor={this.props.minor}
-					labels={this.props.labels}
-					rect={this.props.rect}
-					registerAxis={this.props.registerAxis} />
+					{...others} />
 		);
 	}
 }
