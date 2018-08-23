@@ -57,7 +57,7 @@ If data is an object, then chart lines must be provided with `series` props.
 > https://bitbucket.org/shelacek/plotery/src/master/src/types.d.ts.
 
 
-### `Chart`
+### Chart
 
 Root component for all **Plotery** charts.
 
@@ -66,7 +66,7 @@ Root component for all **Plotery** charts.
 - `data: ChartData` - charts series.
 
 
-### `Surface`
+### Surface
 
 Encapsulates the coordinate system. Allows defining an axis for `Surface` scope, so series defined
 in that scope use that axis. `Chart` introduce `Scope` implicitly.
@@ -92,67 +92,73 @@ Example of multiple axis:
 *No public properties*
 
 
-### `LinearAxis`
+### LinearAxis
 
 Define linear cartesian axis.
 
 #### Properties
 
-- `type: 'x' | 'y'` - type of axis.
-- `position: 'start' | 'end'` (default: 'start' for `type` == 'x', 'end' for `type` == 'y') - position of axis labels.
-- `hide: boolean` (default: false) - Don't display axis (it will be used only for coordinate system).
-- `min: number` - low axis limit.
-- `max: number` - high axis limit.
-- `reference: number` (default: 0) - reference value (origin).
-- `step: number` (optional) - Step between consequence major ticks.
-- `divisor: number` (default: 5) - how many minor ticks are in one major tick.
-- `major: boolean` (default: false) - show major grid.
-- `minor: boolean` (default: false) - show minor grid.
-- `labels: string[] | { (tick: number): string }` (default: x => x) - labels for axis. Array of label strings must have
-  same length as major ticks.
+| Prop        | Type                                    | Default                                | Description                                                                   |
+| ----------- | --------------------------------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| `type`      | `'x' ⎮ 'y'` (required)                  |                                        | Type of axis.                                                                 |
+| `min`       | `number` (required)                     |                                        | Low axis limit.                                                               |
+| `max`       | `number` (required)                     |                                        | High axis limit.                                                              |
+| `position`  | `'start' ⎮ 'end'`                       | `'start'` for `'x'`, `'end'` for `'y'` | Position of axis labels.                                                      |
+| `hide`      | `boolean`                               | `false`                                | Don't display axis (it will be used only for coordinate system).              |
+| `reference` | `number`                                | `0`                                    | Reference value (origin).                                                     |
+| `step`      | `number`                                | *calculated from `min` and `max`*      | Step between consequence major ticks.                                         |
+| `divisor`   | `number`                                | `5`                                    | How many minor ticks are in one major tick.                                   |
+| `major`     | `boolean`                               | `false`                                | Show major grid.                                                              |
+| `minor`     | `boolean`                               | `false`                                | Show minor grid.                                                              |
+| `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                          | Labels for axis. Array of label strings must have same length as major ticks. |
 
 
-### `LogAxis`
+### LogAxis
 
 Define logarithmic cartesian axis.
 
 #### Properties
 
-- `type: 'x' | 'y'` - type of axis.
-- `position: 'start' | 'end'` (default: 'start' for `type` == 'x', 'end' for `type` == 'y') - position of axis labels.
-- `hide: boolean` (default: false) - Don't display axis (it will be used only for coordinate system).
-- `min: number` - low axis limit.
-- `max: number` - high axis limit.
-- `reference: number` (default: 1) - reference value (origin).
-- `step: number` (optional) - Step between consequence major ticks.
-- `divisor: number` (default: 9) - how many minor ticks are in one major tick.
-- `major: boolean` (default: false) - show major grid.
-- `minor: boolean` (default: false) - show minor grid.
-- `labels: string[] | { (tick: number): string }` (default: x => x) - labels for axis. Array of label strings must have
-  same length as major ticks.
+| Prop        | Type                                    | Default                                | Description                                                                   |
+| ----------- | --------------------------------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| `type`      | `'x' ⎮ 'y'` (required)                  |                                        | Type of axis.                                                                 |
+| `min`       | `number` (required)                     |                                        | Low axis limit.                                                               |
+| `max`       | `number` (required)                     |                                        | High axis limit.                                                              |
+| `position`  | `'start' ⎮ 'end'`                       | `'start'` for `'x'`, `'end'` for `'y'` | Position of axis labels.                                                      |
+| `hide`      | `boolean`                               | `false`                                | Don't display axis (it will be used only for coordinate system).              |
+| `reference` | `number`                                | `0`                                    | Reference value (origin).                                                     |
+| `step`      | `number`                                | *calculated from `min` and `max`*      | Step between consequence major ticks.                                         |
+| `divisor`   | `number`                                | `5`                                    | How many minor ticks are in one major tick.                                   |
+| `major`     | `boolean`                               | `false`                                | Show major grid.                                                              |
+| `minor`     | `boolean`                               | `false`                                | Show minor grid.                                                              |
+| `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                          | Labels for axis. Array of label strings must have same length as major ticks. |
 
 
-### `LinearLine`
+### LinearLine
 
 Renders data series as X-Y linear line.
 
 #### Properties
 
-- `series: string` (optional) - defines a key to series in the data object, if specified.
-- `line: boolean` (default: true) - draw line.
-- `area: boolean` (default: false) - draw area filled to 'y' axis reference.
+| Prop     | Type      | Default | Description                                               |
+| -------- | --------- | ------- | --------------------------------------------------------- |
+| `series` | `string`  | none    | Defines a key to series in the data object, if specified. |
+| `line`   | `boolean` | `true`  | Draw line.                                                |
+| `area`   | `boolean` | `false` | Draw area filled to 'y' axis reference.                   |
 
 
-### `BarLine`
+### BarLine
 
 Renders data series as discrete bars.
 
 #### Properties
 
-- `series: string` (optional) - defines key to series in data object, if specified.
+| Prop     | Type      | Default | Description                                               |
+| -------- | --------- | ------- | --------------------------------------------------------- |
+| `series` | `string`  | none    | Defines a key to series in the data object, if specified. |
 
 
-### `Zoom`
+### Zoom
 
 Include controls to enable zooming with a pointer device.
 
@@ -169,8 +175,10 @@ Example of usage:
 
 #### Properties
 
-- `restrict: 'x' | 'y'` (optional) - optionally restrict to 'x' or 'y' axis.
-- `onZoom: { (limits?: number[]): void }` (optional) - callback, that is called if range is selected.
+| Prop       | Type                            | Default | Description                                    |
+| ---------- | ------------------------------- | ------- | ---------------------------------------------- |
+| `restrict` | `'x' ⎮ 'y'`                     | none    | Optionally restrict to 'x' or 'y' axis.        |
+| `onZoom`   | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
 
 
 ## Styles
