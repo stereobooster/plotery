@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+There are no changes yet.
+
+
+## [0.2.0] - 2018-08-23
+
 ### Added
 
 - Logaritmic axis - `LogAxis`.
@@ -30,4 +35,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 [Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v0.1.0
+[0.2.0]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.2.0..v0.1.0
 [0.1.0]: https://bitbucket.org/shelacek/plotery/commits/tag/v0.1.0
