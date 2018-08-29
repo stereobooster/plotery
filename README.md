@@ -19,7 +19,6 @@ for you.
 > please [create an issue].
 
 [create an issue]: https://bitbucket.org/shelacek/plotery/issues
-[CHANGELOG.md]: https://bitbucket.org/shelacek/plotery/src/master/CHANGELOG.md
 
 
 ## Example
@@ -57,19 +56,21 @@ If data is an object, then chart lines must be provided with `series` props.
 > https://bitbucket.org/shelacek/plotery/src/master/src/types.d.ts.
 
 
-### Chart
+### Chart component
 
 Root component for all **Plotery** charts.
 
 #### Properties
 
-- `data: ChartData` - charts series.
+| Prop     | Type                   | Default | Description    |
+| -------- | ---------------------- | ------- | -------------- |
+| `data`   | `ChartData` (required) |         | Charts series. |
 
 
-### Surface
+### Surface component
 
 Encapsulates the coordinate system. Allows defining an axis for `Surface` scope, so series defined
-in that scope use that axis. `Chart` introduce `Scope` implicitly.
+in that scope use that axis. `Chart` introduce `Surface` implicitly.
 
 Example of multiple axis:
 
@@ -92,7 +93,7 @@ Example of multiple axis:
 *No public properties*
 
 
-### LinearAxis
+### LinearAxis component
 
 Define linear cartesian axis.
 
@@ -113,7 +114,7 @@ Define linear cartesian axis.
 | `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                          | Labels for axis. Array of label strings must have same length as major ticks. |
 
 
-### LogAxis
+### LogAxis component
 
 Define logarithmic cartesian axis.
 
@@ -134,7 +135,7 @@ Define logarithmic cartesian axis.
 | `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                          | Labels for axis. Array of label strings must have same length as major ticks. |
 
 
-### LinearLine
+### LinearLine component
 
 Renders data series as X-Y linear line.
 
@@ -147,7 +148,7 @@ Renders data series as X-Y linear line.
 | `area`   | `boolean` | `false` | Draw area filled to 'y' axis reference.                   |
 
 
-### BarLine
+### BarLine component
 
 Renders data series as discrete bars.
 
@@ -158,18 +159,22 @@ Renders data series as discrete bars.
 | `series` | `string`  | none    | Defines a key to series in the data object, if specified. |
 
 
-### Zoom
+### Zoom component
 
 Include controls to enable zooming with a pointer device.
 
 Example of usage:
 
 ```jsx
+_handleZoom = zoom => this.setState({ zoom });
+
+// ...
+
 <Chart data={data}>
 	<LinearAxis type="x" min={zoom ? zoom[0] : 0} max={zoom ? zoom[1] : 100} />
 	<LinearAxis type="y" min={-10} max={10} />
 	<LinearLine />
-	<Zoom restrict="x" onZoom={zoom => this.setState({ zoom })} />
+	<Zoom restrict="x" onZoom={this._handleZoom} />
 </Chart>
 ```
 

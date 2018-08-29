@@ -13,14 +13,14 @@ export interface Axis {
 export type Axes = { [type: string]: Axis };
 
 export interface ChartAttributes {
-    data: ChartData;
-    rect: Rect;
-    axes: Axes;
-    registerAxis: { (axis: Axis): void };
+	data: ChartData;
+	rect: Rect;
+	axes: Axes;
+	registerAxis: { (axis: Axis): void };
 }
 
 export interface ChartProps {
-    data: ChartData;
+	data: ChartData;
 }
 
 export declare class Chart extends Component<ChartProps> {

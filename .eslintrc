@@ -1,7 +1,11 @@
 {
-	"extends": "eslint:recommended",
+	"parser": "babel-eslint",
 	"plugins": [
 		"react"
+	],
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended"
 	],
 	"env": {
 		"browser": true,
@@ -17,22 +21,49 @@
 	},
 	"settings": {
 		"react": {
-			"pragma": "h"
+			"pragma": "h",
+			"version": "16.3.0"
 		}
 	},
 	"rules": {
 		// React
-		"react/jsx-no-bind": ["error", { "ignoreRefs": true }],
-		"react/jsx-no-duplicate-props": "error",
+		"react/button-has-type": "error",
+		"react/display-name": "off",
+		"react/no-access-state-in-setstate": "error",
+		"react/no-array-index-key": "warn",
+		"react/no-did-mount-set-state": "error",
+		"react/no-did-update-set-state": "error",
+		"react/no-multi-comp": "warn",
+		"react/no-typos": "error",
+		"react/no-this-in-sfc": "error",
+		"react/no-unsafe": "warn",
+		"react/no-will-update-set-state": "error",
+		"react/prefer-es6-class": "error",
+		"react/prop-types": "off",
 		"react/self-closing-comp": "warn",
-		"react/no-string-refs": "error",
-		"react/require-render-return": "error",
-		"react/no-is-mounted": "error",
-		"react/jsx-no-comment-textnodes": "error",
+		"react/style-prop-object": "warn",
+		"react/void-dom-elements-no-children": "error",
+
+		// JSX-specific rules
+		"react/jsx-boolean-value": "warn",
+		"react/jsx-closing-bracket-location": ["warn", "after-props"],
+		"react/jsx-closing-tag-location": "warn",
 		"react/jsx-curly-spacing": "warn",
-		"react/jsx-no-undef": "error",
-		"react/jsx-uses-react": "error",
-		"react/jsx-uses-vars": "error",
+		"react/jsx-equals-spacing": "warn",
+		"react/jsx-filename-extension": "error",
+		"react/jsx-first-prop-new-line": ["warn", "multiline"],
+		"react/jsx-indent": ["error", "tab"],
+		"react/jsx-max-props-per-line": ["warn", { "when": "multiline" }],
+		"react/jsx-no-bind": ["error", { "ignoreRefs": true }],
+		"react/jsx-pascal-case": "error",
+		"react/jsx-props-no-multi-spaces": "warn",
+		"react/jsx-tag-spacing": "warn",
+		"react/jsx-wrap-multilines": ["warn", {
+			"declaration": "parens-new-line",
+			"assignment": "parens-new-line",
+			"return": "parens-new-line",
+			"arrow": "parens-new-line"
+		}],
 
 		// Possible Errors
 		"for-direction": "warn",
@@ -51,7 +82,9 @@
 		"max-classes-per-file": "warn",
 		"no-alert": "error",
 		"no-caller": "error",
-		"no-empty-function": ["warn", { "allow": ["functions", "arrowFunctions", "constructors"] }],
+		"no-empty-function": ["warn", {
+			"allow": ["functions", "arrowFunctions", "constructors"]
+		}],
 		"no-empty-pattern": "off",
 		"no-eval": "error",
 		"no-extend-native": "warn",
@@ -67,7 +100,6 @@
 		"no-new-func": "error",
 		"no-new-wrappers": "error",
 		"no-octal-escape": "error",
-		"no-return-assign": "error",
 		"no-return-await": "error",
 		"no-self-compare": "error",
 		"no-sequences": "warn",
@@ -77,7 +109,6 @@
 		"no-useless-concat": "warn",
 		"no-useless-return": "warn",
 		"radix": "warn",
-		"require-await": "warn",
 
 		// Variables
 		"no-label-var": "warn",
@@ -107,7 +138,10 @@
 		"eol-last": "error",
 		"func-call-spacing": "warn",
 		"function-paren-newline": ["warn", "consistent"],
-		"indent": ["error", "tab", { "SwitchCase": 1 }],
+		"indent": ["error", "tab", {
+			"SwitchCase": 1,
+			"ignoredNodes": ["JSXIdentifier"]
+		}],
 		"key-spacing": "warn",
 		"keyword-spacing": "warn",
 		"linebreak-style": ["error", "unix"],
@@ -116,7 +150,14 @@
 		"new-parens": "warn",
 		"no-array-constructor": "error",
 		"no-lonely-if": "warn",
-		"no-mixed-operators": "error",
+		"no-mixed-operators": ["error", {
+			"groups": [
+				["&", "|", "^", "~", "<<", ">>", ">>>"],
+				["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+				["&&", "||"],
+				["in", "instanceof"]
+			]
+		}],
 		"no-mixed-spaces-and-tabs": "error",
 		"no-new-object": "warn",
 		"no-trailing-spaces": "error",
@@ -135,7 +176,11 @@
 		"semi-spacing": "warn",
 		"semi-style": "warn",
 		"space-before-blocks": "warn",
-		"space-before-function-paren": ["warn", { "anonymous": "always", "named": "never", "asyncArrow": "always" }],
+		"space-before-function-paren": ["warn", {
+			"anonymous": "always",
+			"named": "never",
+			"asyncArrow": "always"
+		}],
 		"space-in-parens": "warn",
 		"space-infix-ops": "warn",
 		"space-unary-ops": "warn",
@@ -156,7 +201,6 @@
 		"object-shorthand": ["warn", "consistent-as-needed"],
 		"prefer-arrow-callback": "warn",
 		"prefer-const": "warn",
-		"prefer-destructuring": "warn",
 		"prefer-numeric-literals": "warn",
 		"prefer-rest-params": "warn",
 		"prefer-spread": "warn",

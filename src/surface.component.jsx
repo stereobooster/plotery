@@ -10,7 +10,7 @@ export class Surface extends Component {
 	@bind
 	registerAxis(axis) {
 		this.setState(state => ({
-			axes: Object.assign({}, state.axes, { [axis.type]: axis })
+			axes: { ...state.axes, [axis.type]: axis }
 		}));
 	}
 
@@ -19,7 +19,7 @@ export class Surface extends Component {
 			<g>
 				{withProps(this.props.children, {
 					registerAxis: this.registerAxis,
-					axes: Object.assign({}, this.props.axes, this.state.axes)
+					axes: { ...this.props.axes, ...this.state.axes }
 				})}
 			</g>
 		);

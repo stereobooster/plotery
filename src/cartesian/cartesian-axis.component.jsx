@@ -41,13 +41,13 @@ export class CartesianAxis extends Component {
 			const { height } = this.props.rect;
 			return (
 				<g className="labels">
-					{labels.map((x, index) => <text x={positions[index]} y={height}>{x}</text>)}
+					{labels.map((x, index) => <text key={x} x={positions[index]} y={height}>{x}</text>)}
 				</g>
 			);
 		}
 		return (
 			<g className="labels">
-				{labels.map((x, index) => <text x="0" y={positions[index]}>{x}</text>)}
+				{labels.map((x, index) => <text key={x} x="0" y={positions[index]}>{x}</text>)}
 			</g>
 		);
 	}

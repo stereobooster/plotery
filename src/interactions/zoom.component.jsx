@@ -119,7 +119,12 @@ export class Zoom extends Component {
 			<g className="zoom">
 				{end && <path className="backdrop" d={this._calcBackdropPath(begin, end)} />}
 				{end && <path className="outline" d={this._calcOutlinePath(begin, end)} />}
-				<rect className="event-sink" x="0" y="0" width={width} height={height}
+				<rect
+						className="event-sink"
+						x="0"
+						y="0"
+						width={width}
+						height={height}
 						ref={x => this._eventSink = x} />
 			</g>
 		);

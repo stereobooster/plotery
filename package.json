@@ -13,7 +13,7 @@
 		"build:scss": "node-sass styles/plotery.scss dist/css/plotery.css && cp -r styles dist/scss",
 		"build": "yarn run build:js && yarn run build:scss",
 		"prepare": "yarn run build",
-		"lint:js": "eslint src",
+		"lint:js": "eslint --ext .js --ext .jsx src",
 		"lint:scss": "sass-lint styles/*.scss --verbose",
 		"lint": "yarn run lint:js && yarn run lint:scss"
 	},
@@ -39,6 +39,7 @@
 		"@babel/plugin-proposal-decorators": "^7.0.0-beta.51",
 		"@babel/plugin-transform-react-jsx": "^7.0.0-beta.51",
 		"@babel/preset-env": "^7.0.0-beta.54",
+		"babel-eslint": "^9.0.0",
 		"eslint": "^5.1.0",
 		"eslint-plugin-react": "^7.10.0",
 		"node-sass": "^4.9.0",

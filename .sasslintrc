@@ -10,7 +10,11 @@
 		"no-attribute-selectors": 0,
 		"no-color-hex": 0,
 		"no-color-keywords": 0,
-		"no-color-literals": [1, { "allow-rgba": true, "allow-map-identifiers": false, "allow-variable-identifiers": false }],
+		"no-color-literals": [1, {
+			"allow-rgba": true,
+			"allow-map-identifiers": false,
+			"allow-variable-identifiers": false
+		}],
 		"no-combinators": 0,
 		"no-css-comments": 0,
 		"no-debug": 1,
@@ -23,7 +27,10 @@
 		"no-invalid-hex": 2,
 		"no-mergeable-selectors": 2,
 		"no-misspelled-properties": 2,
-		"no-qualifying-elements": [1, { "allow-element-with-attribute": true, "allow-element-with-class": true }],
+		"no-qualifying-elements": [1, {
+			"allow-element-with-attribute": true,
+			"allow-element-with-class": true
+		}],
 		"no-trailing-whitespace": 1,
 		"no-trailing-zero": 1,
 		"no-transition-all": 0,
