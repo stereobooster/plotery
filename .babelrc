@@ -6,7 +6,6 @@
 	"plugins": [
 		["@babel/plugin-proposal-decorators", { "legacy": true }],
 		["@babel/plugin-proposal-class-properties"],
-		["@babel/plugin-transform-react-constant-elements"],
 		["@babel/transform-react-jsx", { "pragma": "h", "useBuiltIns": true }]
 	]
 }
