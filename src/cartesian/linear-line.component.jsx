@@ -1,6 +1,18 @@
 import { h, Component } from 'preact';
+import { shallowCompare } from '../utils/shallow-compare';
 
 export class LinearLine extends Component {
+	shouldComponentUpdate(nextProps) {
+		return !shallowCompare(this.props, nextProps, [
+			'data',
+			'rect',
+			'axes',
+			'series',
+			'line',
+			'area'
+		]);
+	}
+
 	_scale(points) {
 		return points.map(x => [this.props.axes.x.scale(x[0]), this.props.axes.y.scale(x[1])]);
 	}
