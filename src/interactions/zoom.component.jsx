@@ -5,23 +5,14 @@ import { registerEvents } from '../utils/register-events';
 
 export class Zoom extends Component {
 	_teardownEvents = null;
-	_eventSink = null;
 
 	state = {
 		begin: null,
 		end: null
 	};
 
-	componentDidMount() {
-		this._teardownEvents = registerEvents(this._eventSink, {
-			pointerdown: [this._handlePointerDown],
-			pointermove: [this._handlePointerMove, { passive: true }],
-			pointerup: [this._handlePointerUp]
-		});
-	}
-
 	componentWillUnmount() {
-		this._teardownEvents();
+		this._unregisterEvents();
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -29,13 +20,33 @@ export class Zoom extends Component {
 			|| !shallowCompare(this.state, nextState);
 	}
 
+	_registerEvents() {
+		this._teardownEvents = registerEvents(window, {
+			pointermove: [this._handlePointerMove, { passive: true }],
+			pointerup: [this._handlePointerUp]
+		});
+	}
+
+	_unregisterEvents() {
+		this._teardownEvents && this._teardownEvents();
+		this._teardownEvents = null;
+	}
+
+	_clamp(value, min, max) {
+		return Math.min(Math.max(value, min), max);
+	}
+
 	_getRelativeCoords(event) {
-		const { left, top } = this.props.rect;
-		return [event.pageX - left, event.pageY - top];
+		const { left, top, width, height } = this.props.rect;
+		return [
+			this._clamp(event.pageX - left, 0, width),
+			this._clamp(event.pageY - top, 0, height)
+		];
 	}
 
 	@bind
 	_handlePointerDown(event) {
+		this._registerEvents();
 		!this.state.begin && this.setState({ begin: this._getRelativeCoords(event) });
 		event.preventDefault();
 	}
@@ -47,6 +58,7 @@ export class Zoom extends Component {
 
 	@bind
 	_handlePointerUp(event) {
+		this._unregisterEvents();
 		const { onZoom, restrict } = this.props;
 		if (onZoom) {
 			if (this.state.end) {
@@ -125,7 +137,7 @@ export class Zoom extends Component {
 						y="0"
 						width={width}
 						height={height}
-						ref={x => this._eventSink = x} />
+						onPointerDown={this._handlePointerDown} />
 			</g>
 		);
 	}
