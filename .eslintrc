@@ -93,7 +93,6 @@
 		"no-fallthrough": "warn",
 		"no-floating-decimal": "warn",
 		"no-implied-eval": "error",
-		"no-invalid-this": "error",
 		"no-lone-blocks": "warn",
 		"no-loop-func": "warn",
 		"no-multi-spaces": "warn",
