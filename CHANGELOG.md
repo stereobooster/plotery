@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Guard LinearLine render with shouldComponentUpdate. 
+- Guard LinearLine and BarLine render with shouldComponentUpdate. 
 
 
 ## [0.2.0] - 2018-08-23
