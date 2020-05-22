@@ -157,6 +157,23 @@ Renders data series as X-Y linear line.
 *¹`class` and `className` are equivalent.*
 
 
+### CardinalLine component
+
+Renders data series as X-Y line with Catmull-Rome spline interpolation.
+
+#### Properties
+
+| Prop      | Type      | Default | Description                                                    |
+| --------- | --------- | ------- | -------------------------------------------------------------- |
+| `class`¹  | `string`  | none    | Space-separated list of the classes applied to line container. |
+| `series`  | `string`  | none    | Defines a key to series in the data object, if specified.      |
+| `tension` | `number`  | 1       | Affects how sharply the curve bends control points (0..1).     |
+| `line`    | `boolean` | `true`  | Draw line.                                                     |
+| `area`    | `boolean` | `false` | Draw area filled to 'y' axis reference.                        |
+
+*¹`class` and `className` are equivalent.*
+
+
 ### BarLine component
 
 Renders data series as discrete bars.
@@ -205,11 +222,6 @@ _handleZoom = zoom => this.setState({ zoom });
 
 
 ## Todos
-
-Cartesian charts:
-
-- ~~`LogarithmAxis`~~ - implemented as `LogAxis`
-- `CardinalLine` - like `LinearLine`, but with smoothing.
 
 Polar charts:
 

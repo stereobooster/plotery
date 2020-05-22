@@ -111,6 +111,19 @@ export declare class LinearLine extends Component<LinearLineProps> {
 	render(): ComponentChild;
 }
 
+export interface CardinalLineProps extends Partial<ChartAttributes> {
+	class?: string;
+	className?: string;
+	series?: string;
+	tension?: number;
+	line?: boolean;
+	area?: boolean;
+}
+
+export declare class CardinalLine extends Component<CardinalLineProps> {
+	render(): ComponentChild;
+}
+
 export interface BarLineProps extends Partial<ChartAttributes> {
 	class?: string;
 	className?: string;

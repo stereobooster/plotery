@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Axes and lines now have `class`/`className` prop.
+- Add `CardinalLine` that use Bézier curve.
 
 
 ## [0.2.1] - 2018-11-05
