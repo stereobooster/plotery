@@ -52,5 +52,20 @@ $plotery-minor-opacity: 0.15 !default;
 			text-anchor: middle;
 			transform: translate(0, 20px);
 		}
+
+		&.polar text {
+			text-anchor: middle;
+		}
+
+		/* experimental: move labels of polar axes out of plot */
+		.labels {
+			transform-origin: 50% 50%;
+			font-size: 91%;
+			transform: translateY(1.5%) scale(1.1);
+
+			text:first-child {
+				display: none;
+			}
+		}
 	}
 }

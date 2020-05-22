@@ -229,9 +229,11 @@ _handleZoom = zoom => this.setState({ zoom });
 
 ## Todos
 
-Polar charts:
+- Documentation & typings for `RadialAxis`, `AngularAxis`, `PolarLine`, and `PolarSector`.
 
-- `PolarLine`
-- `PolarAxis`
+Interactions:
+
+- `ZoomAndPan`
+- `Tooltip`
 
 **PRs are welcome!**

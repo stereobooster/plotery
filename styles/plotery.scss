@@ -22,6 +22,10 @@ $plotery-series-colors: (
 				'.plot:nth-of-type(4n+#{$i + 1})',
 				nth($plotery-series-colors, $i + 1)
 			);
+			@include plotery-plot-element-color(
+				'.plot .element:nth-of-type(4n+#{$i + 1})',
+				nth($plotery-series-colors, $i + 1)
+			);
 		}
 
 		margin: $margin;

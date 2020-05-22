@@ -6,4 +6,8 @@ export { LogAxis } from './cartesian/log-axis.component';
 export { CardinalLine } from './cartesian/cardinal-line.component';
 export { LinearLine } from './cartesian/linear-line.component';
 export { BarLine } from './cartesian/bar-line.component';
+export { RadialAxis } from './polar/radial-axis.component';
+export { AngularAxis } from './polar/angular-axis.component';
+export { PolarLine } from './polar/polar-line.component';
+export { PolarSector } from './polar/polar-sector.component';
 export { Zoom } from './interactions/zoom.component';
