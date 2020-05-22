@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - Apply `{...attrs}` props to lines containers.
+- New default styles.
+- Most of the low-level functions & components are now exported to make it easy
+  to build your own components without having to duplicate the code.
 
 
 ## [0.2.1] - 2018-11-05

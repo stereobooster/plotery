@@ -229,7 +229,7 @@ _handleZoom = zoom => this.setState({ zoom });
 
 ## Todos
 
-- Documentation & typings for `RadialAxis`, `AngularAxis`, `PolarLine`, and `PolarSector`.
+- Update ducumentaion and typings.
 
 Interactions:
 
