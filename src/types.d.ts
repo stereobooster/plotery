@@ -6,7 +6,7 @@ export type Rect = { left: number; top: number; width: number; height: number };
 
 export interface Axis {
 	type: string;
-	scale: { (value: number, inverse?: boolean): number };
+	scale: { (value: number, reverse?: boolean): number };
 	reference: number;
 }
 
@@ -38,7 +38,7 @@ export interface CartesianAxisProps extends Partial<ChartAttributes> {
 	class?: string;
 	className?: string;
 	type: 'x' | 'y';
-	scale: { (value: number, inverse?: boolean): number };
+	scale: { (value: number, reverse?: boolean): number };
 	position?: 'start' | 'end';
 	hide?: boolean;
 	min: number;
@@ -52,7 +52,7 @@ export interface CartesianAxisProps extends Partial<ChartAttributes> {
 
 export declare class CartesianAxis extends Component<CartesianAxisProps> implements Axis {
 	type: string;
-	scale: { (value: number, inverse?: boolean): number };
+	scale: { (value: number, reverse?: boolean): number };
 	reference: number;
 	render(): ComponentChild;
 }
@@ -74,7 +74,7 @@ export interface LinearAxisProps extends Partial<ChartAttributes> {
 }
 
 export declare class LinearAxis extends Component<LinearAxisProps> {
-	scale(value: number, inverse?: boolean): number;
+	scale(value: number, reverse?: boolean): number;
 	render(): ComponentChild;
 }
 
@@ -95,7 +95,7 @@ export interface LogAxisProps extends Partial<ChartAttributes> {
 }
 
 export declare class LogAxis extends Component<LogAxisProps> {
-	scale(value: number, inverse?: boolean): number;
+	scale(value: number, reverse?: boolean): number;
 	render(): ComponentChild;
 }
 

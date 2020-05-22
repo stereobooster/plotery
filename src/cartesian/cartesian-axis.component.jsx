@@ -5,12 +5,18 @@ export class CartesianAxis extends Component {
 		return this.props.type;
 	}
 
-	get scale() {
-		return this.props.scale;
-	}
-
 	get reference() {
 		return this.props.reference;
+	}
+
+	scale(value, reverse = false) {
+		const { rect, min, max, scaler } = this.props;
+		if (reverse) {
+			const normalized = this.type === 'x' ? value / rect.width : 1 - value / rect.height;
+			return scaler(normalized, min, max, reverse);
+		}
+		const normalized = scaler(value, min, max, reverse);
+		return this.type === 'x' ? normalized * rect.width : (1 - normalized) * rect.height;
 	}
 
 	componentDidMount() {
@@ -41,13 +47,17 @@ export class CartesianAxis extends Component {
 			const { height } = this.props.rect;
 			return (
 				<g className="labels">
-					{labels.map((x, index) => <text key={x} x={positions[index]} y={height}>{x}</text>)}
+					{labels.map((x, index) => (
+						<text key={x} x={positions[index]} y={height}>{x}</text>
+					))}
 				</g>
 			);
 		}
 		return (
 			<g className="labels">
-				{labels.map((x, index) => <text key={x} x="0" y={positions[index]}>{x}</text>)}
+				{labels.map((x, index) => (
+					<text key={x} x="0" y={positions[index]}>{x}</text>
+				))}
 			</g>
 		);
 	}
@@ -57,9 +67,11 @@ export class CartesianAxis extends Component {
 			return null;
 		}
 		const majorPos = ticks.major.map(x => this.scale(x));
-		const minorPos = ticks.minor.map(x => this.scale(x));
+		const minorPos = minor && ticks.minor.map(x => this.scale(x));
 		const refPos = this.scale(reference);
-		const drawRef = 0 <= refPos && refPos <= (this.type === 'x' ? rect.width : rect.height);
+		const drawRef = major
+			&& 0 <= refPos
+			&& refPos <= (this.type === 'x' ? rect.width : rect.height);
 		const cls = [
 			'axis cartesian',
 			this.type,
