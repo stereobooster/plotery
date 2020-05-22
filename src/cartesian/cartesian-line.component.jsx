@@ -29,20 +29,18 @@ export class CartesianLine extends Component {
 			this.props.class || className
 		].filter(x => x);
 		return (
-			<svg className={cls.join(' ')} width={rect.width} height={rect.height}>
+			<svg className={cls.join(' ')} width={rect.width} height={rect.height} {...attrs}>
 				{area && (
 					<path
 						key="area"
 						className="area"
-						d={this._closePath(scaled, path)}
-						{...attrs} />
+						d={this._closePath(scaled, path)} />
 				)}
 				{line !== false && (
 					<path
 						key="line"
 						className="line"
-						d={path}
-						{...attrs} />
+						d={path} />
 				)}
 			</svg>
 		);

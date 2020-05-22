@@ -105,6 +105,7 @@ export interface LinearLineProps extends Partial<ChartAttributes> {
 	series?: string;
 	line?: boolean;
 	area?: boolean;
+	[attrs: string]: any;
 }
 
 export declare class LinearLine extends Component<LinearLineProps> {
@@ -118,6 +119,7 @@ export interface CardinalLineProps extends Partial<ChartAttributes> {
 	tension?: number;
 	line?: boolean;
 	area?: boolean;
+	[attrs: string]: any;
 }
 
 export declare class CardinalLine extends Component<CardinalLineProps> {
@@ -128,6 +130,7 @@ export interface BarLineProps extends Partial<ChartAttributes> {
 	class?: string;
 	className?: string;
 	series?: string;
+	[attrs: string]: any;
 }
 
 export declare class BarLine extends Component<BarLineProps> {

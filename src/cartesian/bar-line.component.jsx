@@ -15,7 +15,7 @@ export class BarLine extends Component {
 		return points.reduce((acc, x) => `${acc}M${x[0]},${x[1]}V${zero}`, '');
 	}
 
-	render({ className, data, rect, axes, series }) {
+	render({ className, data, rect, axes, series, ...attrs }) {
 		const points = data && (series ? data[series] : data);
 		if (!points || !points.length || !axes.x || !axes.y) {
 			return null;
@@ -28,7 +28,7 @@ export class BarLine extends Component {
 			this.props.class || className
 		].filter(x => x);
 		return (
-			<svg className={cls.join(' ')} width={rect.width} height={rect.height}>
+			<svg className={cls.join(' ')} width={rect.width} height={rect.height} {...attrs}>
 				<path className="bars" d={path} />
 			</svg>
 		);

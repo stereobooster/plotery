@@ -156,6 +156,8 @@ Renders data series as X-Y linear line.
 
 *¹`class` and `className` are equivalent.*
 
+Any other passed property will be added to `LinearLine` container.
+
 
 ### CardinalLine component
 
@@ -173,6 +175,8 @@ Renders data series as X-Y line with Catmull-Rome spline interpolation.
 
 *¹`class` and `className` are equivalent.*
 
+Any other passed property will be added to `CardinalLine` container.
+
 
 ### BarLine component
 
@@ -186,6 +190,8 @@ Renders data series as discrete bars.
 | `series` | `string`  | none    | Defines a key to series in the data object, if specified.      |
 
 *¹`class` and `className` are equivalent.*
+
+Any other passed property will be added to `BarLine` container.
 
 
 ### Zoom component
