@@ -1,7 +1,7 @@
 $plotery-reference-color: black !default;
 $plotery-grid-color: black !default;
-$plotery-major-opacity: 0.3 !default;
-$plotery-minor-opacity: 0.15 !default;
+$plotery-major-opacity: 0.25 !default;
+$plotery-minor-opacity: 0.12 !default;
 
 @mixin plotery-axis(
 	$reference-color: $plotery-reference-color,
