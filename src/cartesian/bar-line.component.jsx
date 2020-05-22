@@ -15,16 +15,20 @@ export class BarLine extends Component {
 		return points.reduce((acc, x) => `${acc}M${x[0]},${x[1]}V${zero}`, '');
 	}
 
-	render({ data, rect, axes, series }) {
+	render({ className, data, rect, axes, series }) {
 		const points = data && (series ? data[series] : data);
 		if (!points || !points.length || !axes.x || !axes.y) {
 			return null;
 		}
 		const scaled = this._scale(points);
 		const path = this._calcPath(scaled);
-		const className = ['plot', series].filter(x => x).join(' ');
+		const cls = [
+			'plot cartesian bar',
+			series,
+			this.props.class || className
+		].filter(x => x);
 		return (
-			<svg className={className} width={rect.width} height={rect.height}>
+			<svg className={cls.join(' ')} width={rect.width} height={rect.height}>
 				<path className="bars" d={path} />
 			</svg>
 		);

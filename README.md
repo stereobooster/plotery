@@ -101,6 +101,7 @@ Define linear cartesian axis.
 
 | Prop        | Type                                    | Default                                | Description                                                                   |
 | ----------- | --------------------------------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| `class`¹    | `string`                                | none                                   | Space-separated list of the classes applied to axis container.                |
 | `type`      | `'x' ⎮ 'y'` (required)                  |                                        | Type of axis.                                                                 |
 | `min`       | `number` (required)                     |                                        | Low axis limit.                                                               |
 | `max`       | `number` (required)                     |                                        | High axis limit.                                                              |
@@ -112,6 +113,8 @@ Define linear cartesian axis.
 | `major`     | `boolean`                               | `false`                                | Show major grid.                                                              |
 | `minor`     | `boolean`                               | `false`                                | Show minor grid.                                                              |
 | `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                          | Labels for axis. Array of label strings must have same length as major ticks. |
+
+*¹`class` and `className` are equivalent.*
 
 
 ### LogAxis component
@@ -122,6 +125,7 @@ Define logarithmic cartesian axis.
 
 | Prop        | Type                                    | Default                                | Description                                                                   |
 | ----------- | --------------------------------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| `class`¹    | `string`                                | none                                   | Space-separated list of the classes applied to axis container.                |
 | `type`      | `'x' ⎮ 'y'` (required)                  |                                        | Type of axis.                                                                 |
 | `min`       | `number` (required)                     |                                        | Low axis limit.                                                               |
 | `max`       | `number` (required)                     |                                        | High axis limit.                                                              |
@@ -134,6 +138,8 @@ Define logarithmic cartesian axis.
 | `minor`     | `boolean`                               | `false`                                | Show minor grid.                                                              |
 | `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                          | Labels for axis. Array of label strings must have same length as major ticks. |
 
+*¹`class` and `className` are equivalent.*
+
 
 ### LinearLine component
 
@@ -141,11 +147,14 @@ Renders data series as X-Y linear line.
 
 #### Properties
 
-| Prop     | Type      | Default | Description                                               |
-| -------- | --------- | ------- | --------------------------------------------------------- |
-| `series` | `string`  | none    | Defines a key to series in the data object, if specified. |
-| `line`   | `boolean` | `true`  | Draw line.                                                |
-| `area`   | `boolean` | `false` | Draw area filled to 'y' axis reference.                   |
+| Prop     | Type      | Default | Description                                                    |
+| -------- | --------- | ------- | -------------------------------------------------------------- |
+| `class`¹ | `string`  | none    | Space-separated list of the classes applied to line container. |
+| `series` | `string`  | none    | Defines a key to series in the data object, if specified.      |
+| `line`   | `boolean` | `true`  | Draw line.                                                     |
+| `area`   | `boolean` | `false` | Draw area filled to 'y' axis reference.                        |
+
+*¹`class` and `className` are equivalent.*
 
 
 ### BarLine component
@@ -154,9 +163,12 @@ Renders data series as discrete bars.
 
 #### Properties
 
-| Prop     | Type      | Default | Description                                               |
-| -------- | --------- | ------- | --------------------------------------------------------- |
-| `series` | `string`  | none    | Defines a key to series in the data object, if specified. |
+| Prop     | Type      | Default | Description                                                    |
+| -------- | --------- | ------- | -------------------------------------------------------------- |
+| `class`¹ | `string`  | none    | Space-separated list of the classes applied to line container. |
+| `series` | `string`  | none    | Defines a key to series in the data object, if specified.      |
+
+*¹`class` and `className` are equivalent.*
 
 
 ### Zoom component

@@ -35,6 +35,8 @@ export declare class Surface extends Component<SurfaceProps> {
 }
 
 export interface CartesianAxisProps extends Partial<ChartAttributes> {
+	class?: string;
+	className?: string;
 	type: 'x' | 'y';
 	scale: { (value: number, inverse?: boolean): number };
 	position?: 'start' | 'end';
@@ -56,6 +58,8 @@ export declare class CartesianAxis extends Component<CartesianAxisProps> impleme
 }
 
 export interface LinearAxisProps extends Partial<ChartAttributes> {
+	class?: string;
+	className?: string;
 	type: 'x' | 'y';
 	position?: 'start' | 'end';
 	hide?: boolean;
@@ -75,6 +79,8 @@ export declare class LinearAxis extends Component<LinearAxisProps> {
 }
 
 export interface LogAxisProps extends Partial<ChartAttributes> {
+	class?: string;
+	className?: string;
 	type: 'x' | 'y';
 	position?: 'start' | 'end';
 	hide?: boolean;
@@ -94,6 +100,8 @@ export declare class LogAxis extends Component<LogAxisProps> {
 }
 
 export interface LinearLineProps extends Partial<ChartAttributes> {
+	class?: string;
+	className?: string;
 	series?: string;
 	line?: boolean;
 	area?: boolean;
@@ -104,6 +112,8 @@ export declare class LinearLine extends Component<LinearLineProps> {
 }
 
 export interface BarLineProps extends Partial<ChartAttributes> {
+	class?: string;
+	className?: string;
 	series?: string;
 }
 

@@ -52,7 +52,7 @@ export class CartesianAxis extends Component {
 		);
 	}
 
-	render({ rect, hide, min, max, reference, ticks, major, minor, labels }) {
+	render({ className, rect, hide, min, max, reference, ticks, major, minor, labels }) {
 		if (hide || min === max) {
 			return null;
 		}
@@ -60,8 +60,14 @@ export class CartesianAxis extends Component {
 		const minorPos = ticks.minor.map(x => this.scale(x));
 		const refPos = this.scale(reference);
 		const drawRef = 0 <= refPos && refPos <= (this.type === 'x' ? rect.width : rect.height);
+		const cls = [
+			'axis cartesian',
+			this.type,
+			this._getPosition(),
+			this.props.class || className
+		].filter(x => x);
 		return (
-			<g className={`axis ${this.type} ${this._getPosition()}`}>
+			<g className={cls.join(' ')}>
 				{major && <path className="grid major" d={this._calcPath(majorPos)} />}
 				{minor && <path className="grid minor" d={this._calcPath(minorPos)} />}
 				{drawRef && <path className="reference" d={this._calcPath([refPos])} />}

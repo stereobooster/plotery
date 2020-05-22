@@ -19,16 +19,20 @@ export class LinearLine extends Component {
 		return `${path}L${points[points.length - 1][0]},${zero}L${points[0][0]},${zero}Z`;
 	}
 
-	render({ data, rect, axes, series, line, area }) {
+	render({ className, data, rect, axes, series, line, area }) {
 		const points = data && (series ? data[series] : data);
 		if (!points || !points.length || !axes.x || !axes.y) {
 			return null;
 		}
 		const scaled = this._scale(points);
 		const path = this._calcPath(scaled);
-		const className = ['plot', series].filter(x => x).join(' ');
+		const cls = [
+			'plot cartesian line',
+			series,
+			this.props.class || className
+		].filter(x => x);
 		return (
-			<svg className={className} width={rect.width} height={rect.height}>
+			<svg className={cls.join(' ')} width={rect.width} height={rect.height}>
 				{area && <path key="area" className="area" d={this._closePath(scaled, path)} />}
 				{line !== false && <path key="line" className="line" d={path} />}
 			</svg>
