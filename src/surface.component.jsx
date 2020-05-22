@@ -14,12 +14,12 @@ export class Surface extends Component {
 		}));
 	}
 
-	render() {
+	render({ children, axes }, { axes: localAxes }) {
 		return (
 			<g>
-				{withProps(this.props.children, {
+				{withProps(children, {
 					registerAxis: this.registerAxis,
-					axes: { ...this.props.axes, ...this.state.axes }
+					axes: { ...axes, ...localAxes }
 				})}
 			</g>
 		);

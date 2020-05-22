@@ -33,15 +33,12 @@ export class Chart extends Component {
 		}
 	}
 
-	render() {
+	render({ children, data }, { rect }) {
 		return (
 			<div className="plotery">
 				<svg overflow="visible">
 					<Surface>
-						{this.state.rect && withProps(this.props.children, {
-							data: this.props.data,
-							rect: this.state.rect
-						})}
+						{rect && withProps(children, { data, rect })}
 					</Surface>
 				</svg>
 			</div>

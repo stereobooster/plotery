@@ -5,20 +5,7 @@ import { CartesianAxis } from './cartesian-axis.component';
 
 export class LinearAxis extends Component {
 	shouldComponentUpdate(nextProps) {
-		return !shallowCompare(this.props, nextProps, [
-			'rect',
-			'type',
-			'position',
-			'hide',
-			'min',
-			'max',
-			'reference',
-			'step',
-			'divisor',
-			'major',
-			'minor',
-			'labels'
-		]);
+		return !shallowCompare(this.props, nextProps, x => x !== 'data');
 	}
 
 	@bind
@@ -58,8 +45,7 @@ export class LinearAxis extends Component {
 		return ticks;
 	}
 
-	render() {
-		const { min, max, reference, step, divisor, ...others } = this.props;
+	render({ min, max, reference, step, divisor, ...others }) {
 		return (
 			<CartesianAxis
 					min={min}

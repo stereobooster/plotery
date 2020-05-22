@@ -1,15 +1,12 @@
-export function shallowCompare(a, b, keys) {
+export function shallowCompare(a, b, isCheck = () => true) {
 	if (a === b) {
 		return true;
 	}
 	if (!a || !b) {
 		return false;
 	}
-	if (!keys) {
-		keys = Object.keys(a);
-	}
-	for (const key of keys) {
-		if (a[key] !== b[key]) {
+	for (const key of Object.keys(a)) {
+		if (isCheck(key) && a[key] !== b[key]) {
 			return false;
 		}
 	}

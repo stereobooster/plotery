@@ -3,14 +3,7 @@ import { shallowCompare } from '../utils/shallow-compare';
 
 export class LinearLine extends Component {
 	shouldComponentUpdate(nextProps) {
-		return !shallowCompare(this.props, nextProps, [
-			'data',
-			'rect',
-			'axes',
-			'series',
-			'line',
-			'area'
-		]);
+		return !shallowCompare(this.props, nextProps);
 	}
 
 	_scale(points) {
@@ -26,8 +19,7 @@ export class LinearLine extends Component {
 		return `${path}L${points[points.length - 1][0]},${zero}L${points[0][0]},${zero}Z`;
 	}
 
-	render() {
-		const { data, rect, axes, series, line, area } = this.props;
+	render({ data, rect, axes, series, line, area }) {
 		const points = data && (series ? data[series] : data);
 		if (!points || !points.length || !axes.x || !axes.y) {
 			return null;

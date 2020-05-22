@@ -52,8 +52,7 @@ export class CartesianAxis extends Component {
 		);
 	}
 
-	render() {
-		const { rect, hide, min, max, reference, ticks, major, minor, labels } = this.props;
+	render({ rect, hide, min, max, reference, ticks, major, minor, labels }) {
 		if (hide || min === max) {
 			return null;
 		}

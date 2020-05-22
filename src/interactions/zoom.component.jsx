@@ -16,7 +16,7 @@ export class Zoom extends Component {
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
-		return !shallowCompare(this.props, nextProps, ['rect'])
+		return !shallowCompare(this.props, nextProps, x => x === 'rect')
 			|| !shallowCompare(this.state, nextState);
 	}
 
@@ -124,20 +124,18 @@ export class Zoom extends Component {
 		return `M${x1},${y1}H${x2}V${y2}H${x1}Z`;
 	}
 
-	render() {
-		const { width, height } = this.props.rect;
-		const { begin, end } = this.state;
+	render({ rect }, { begin, end }) {
 		return (
 			<g className="zoom">
 				{end && <path className="backdrop" d={this._calcBackdropPath(begin, end)} />}
 				{end && <path className="outline" d={this._calcOutlinePath(begin, end)} />}
 				<rect
-						className="event-sink"
-						x="0"
-						y="0"
-						width={width}
-						height={height}
-						onPointerDown={this._handlePointerDown} />
+					className="event-sink"
+					x="0"
+					y="0"
+					width={rect.width}
+					height={rect.height}
+					onPointerDown={this._handlePointerDown} />
 			</g>
 		);
 	}
