@@ -1,4 +1,5 @@
 import { h, Component } from 'preact';
+import { shallowCompare } from '../utils/shallow-compare';
 
 export class CartesianAxis extends Component {
 	get type() {
@@ -20,7 +21,13 @@ export class CartesianAxis extends Component {
 	}
 
 	componentDidMount() {
-		this.props.registerAxis(this);
+		this.props.updateAxis(this);
+	}
+
+	componentDidUpdate(prevProps) {
+		if (!shallowCompare(prevProps, this.props, x => x === 'min' || x === 'max')) {
+			this.props.updateAxis(this);
+		}
 	}
 
 	_getPosition() {

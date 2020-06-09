@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 import { bind } from '../utils/bind';
+import { shallowCompare } from '../utils/shallow-compare';
 
 export class PolarAxis extends Component {
 	get type() {
@@ -25,7 +26,13 @@ export class PolarAxis extends Component {
 	}
 
 	componentDidMount() {
-		this.props.registerAxis(this);
+		this.props.updateAxis(this);
+	}
+
+	componentDidUpdate(prevProps) {
+		if (!shallowCompare(prevProps, this.props, x => x === 'min' || x === 'max')) {
+			this.props.updateAxis(this);
+		}
 	}
 
 	@bind

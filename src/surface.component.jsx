@@ -1,26 +1,34 @@
 import { h, Component } from 'preact';
 import { bind } from './utils/bind';
 import { withProps } from './utils/with-props';
+import { shallowCompare } from './utils/shallow-compare';
 
 export class Surface extends Component {
 	state = {
+		remoteAxes: {},
+		localAxes: {},
 		axes: {}
 	};
 
+	static getDerivedStateFromProps(props, state) {
+		return shallowCompare(props.axes, state.remoteAxes) ? null : {
+			remoteAxes: props.axes,
+			axes: { ...props.axes, ...state.localAxes }
+		};
+	}
+
 	@bind
-	registerAxis(axis) {
+	updateAxis(axis) {
 		this.setState(state => ({
-			axes: { ...state.axes, [axis.type]: axis }
+			localAxes: { ...state.localAxes, [axis.type]: axis },
+			axes: { ...state.remoteAxes, ...state.localAxes, [axis.type]: axis }
 		}));
 	}
 
-	render({ children, axes }, { axes: localAxes }) {
+	render({ children }, { axes }) {
 		return (
 			<g>
-				{withProps(children, {
-					registerAxis: this.registerAxis,
-					axes: { ...axes, ...localAxes }
-				})}
+				{withProps(children, { updateAxis: this.updateAxis, axes: axes })}
 			</g>
 		);
 	}
