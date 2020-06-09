@@ -1,12 +1,8 @@
 import { h, Component } from 'preact';
-import { shallowCompare } from '../utils/shallow-compare';
+import { pure } from '../utils/pure';
 import { linear } from '../math/interpolations/linear';
 
-export class PolarLine extends Component {
-	shouldComponentUpdate(nextProps) {
-		return !shallowCompare(this.props, nextProps);
-	}
-
+export const PolarLine = pure(class extends Component {
 	_scale(points) {
 		const { axes } = this.props;
 		const center = axes.r.center;
@@ -35,4 +31,4 @@ export class PolarLine extends Component {
 			</svg>
 		);
 	}
-}
+});

@@ -1,11 +1,7 @@
 import { h, Component } from 'preact';
-import { shallowCompare } from '../utils/shallow-compare';
+import { pure } from '../utils/pure';
 
-export class BarLine extends Component {
-	shouldComponentUpdate(nextProps) {
-		return !shallowCompare(this.props, nextProps);
-	}
-
+export const BarLine = pure(class extends Component {
 	_scale(points) {
 		return points.map(x => [this.props.axes.x.scale(x[0]), this.props.axes.y.scale(x[1])]);
 	}
@@ -33,4 +29,4 @@ export class BarLine extends Component {
 			</svg>
 		);
 	}
-}
+});

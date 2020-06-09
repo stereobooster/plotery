@@ -1,12 +1,7 @@
 import { h, Component } from 'preact';
-import { shallowCompare } from '../utils/shallow-compare';
 import { linear } from '../math/interpolations/linear';
 
 export class CartesianLine extends Component {
-	shouldComponentUpdate(nextProps) {
-		return !shallowCompare(this.props, nextProps);
-	}
-
 	_scale(points) {
 		return points.map(x => [this.props.axes.x.scale(x[0]), this.props.axes.y.scale(x[1])]);
 	}

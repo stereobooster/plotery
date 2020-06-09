@@ -1,11 +1,7 @@
 import { h, Component } from 'preact';
-import { shallowCompare } from '../utils/shallow-compare';
+import { pure } from '../utils/pure';
 
-export class PolarSector extends Component {
-	shouldComponentUpdate(nextProps) {
-		return !shallowCompare(this.props, nextProps);
-	}
-
+export const PolarSector = pure(class extends Component {
 	_transform(points, inner, outer) {
 		const { axes } = this.props;
 		const center = axes.r.center;
@@ -54,4 +50,4 @@ export class PolarSector extends Component {
 		);
 		/* eslint-enable react/no-array-index-key */
 	}
-}
+});
