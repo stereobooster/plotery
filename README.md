@@ -229,7 +229,8 @@ _handleZoom = zoom => this.setState({ zoom });
 
 ## Todos
 
-- Update ducumentaion and typings.
+- Update documentation and typings.
+- Target size ~ 5kiB (minified + gzip)
 
 Interactions:
 
