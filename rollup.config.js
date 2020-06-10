@@ -12,7 +12,8 @@ export default {
 			ecma: 6,
 			module: true,
 			mangle: {
-				toplevel: true
+				toplevel: true,
+				properties: { regex: /^_/ }
 			},
 			compress: {
 				passes: 2,

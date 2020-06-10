@@ -1,5 +1,4 @@
 import { h, Component } from 'preact';
-import { bind } from '../utils/bind';
 import { shallowCompare } from '../utils/shallow-compare';
 import { registerEvents } from '../utils/register-events';
 
@@ -44,20 +43,17 @@ export class Zoom extends Component {
 		];
 	}
 
-	@bind
-	_handlePointerDown(event) {
+	_handlePointerDown = event => {
 		this._registerEvents();
 		!this.state.begin && this.setState({ begin: this._getRelativeCoords(event) });
 		event.preventDefault();
-	}
+	};
 
-	@bind
-	_handlePointerMove(event) {
+	_handlePointerMove = event => {
 		this.state.begin && this.setState({ end: this._getRelativeCoords(event) });
-	}
+	};
 
-	@bind
-	_handlePointerUp(event) {
+	_handlePointerUp = event => {
 		this._unregisterEvents();
 		const { onZoom, restrict } = this.props;
 		if (onZoom) {
@@ -81,7 +77,7 @@ export class Zoom extends Component {
 		}
 		this.setState({ begin: null, end: null });
 		event.preventDefault();
-	}
+	};
 
 	_scaleCoords() {
 		const { axes } = this.props;

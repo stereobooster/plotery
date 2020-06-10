@@ -1,5 +1,4 @@
 import { h, Component } from 'preact';
-import { bind } from './utils/bind';
 import { withProps } from './utils/with-props';
 import { shallowCompare } from './utils/shallow-compare';
 
@@ -17,13 +16,10 @@ export class Surface extends Component {
 		};
 	}
 
-	@bind
-	updateAxis(axis) {
-		this.setState(state => ({
-			localAxes: { ...state.localAxes, [axis.type]: axis },
-			axes: { ...state.remoteAxes, ...state.localAxes, [axis.type]: axis }
-		}));
-	}
+	updateAxis = axis => this.setState(state => ({
+		localAxes: { ...state.localAxes, [axis.type]: axis },
+		axes: { ...state.remoteAxes, ...state.localAxes, [axis.type]: axis }
+	}));
 
 	render({ children }, { axes }) {
 		return (

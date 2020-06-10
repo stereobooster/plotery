@@ -1,5 +1,4 @@
 import { h, Component } from 'preact';
-import { bind } from '../utils/bind';
 import { shallowCompare } from '../utils/shallow-compare';
 
 export class PolarAxis extends Component {
@@ -17,13 +16,12 @@ export class PolarAxis extends Component {
 		return Math.min(width, height) / 2;
 	}
 
-	@bind
-	scale(value, reverse = false) {
+	scale = (value, reverse = false) => {
 		const { min, max, scaler } = this.props;
 		const multiplier = this.type === 'r' ? this.radius : 2 * Math.PI;
 		return (reverse ? 1 : multiplier)
 			* scaler(value / (reverse ? multiplier : 1), min, max, reverse);
-	}
+	};
 
 	componentDidMount() {
 		this.props.updateAxis(this);
@@ -35,15 +33,14 @@ export class PolarAxis extends Component {
 		}
 	}
 
-	@bind
-	_transformTick(value) {
+	_transformTick = value => {
 		const scaled = this.scale(value);
 		if (this.type === 'r') {
 			return [0, scaled];
 		}
 		const radius = this.radius;
 		return [radius * Math.sin(scaled), radius * Math.cos(scaled)];
-	}
+	};
 
 	_calcPath(center, values) {
 		return values
