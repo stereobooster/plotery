@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+There are no changes yet.
+
+
+## [0.3.0] - 2020-06-13
+
 ### Added
 
 - Axes and lines now have `class`/`className` prop.
@@ -59,7 +64,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial version.
 
 
-[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v0.2.1
+[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v0.3.0
+[0.3.0]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.3.0..v0.2.1
 [0.2.1]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.2.1..v0.2.0
 [0.2.0]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.2.0..v0.1.0
 [0.1.0]: https://bitbucket.org/shelacek/plotery/commits/tag/v0.1.0
