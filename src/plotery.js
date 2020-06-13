@@ -5,9 +5,9 @@ export { CartesianAxis } from './cartesian/cartesian-axis.component';
 export { LinearAxis } from './cartesian/linear-axis.component';
 export { LogAxis } from './cartesian/log-axis.component';
 
-export { CardinalLine } from './cartesian/cardinal-line.component';
-export { LinearLine } from './cartesian/linear-line.component';
 export { CartesianLine } from './cartesian/cartesian-line.component';
+export { LinearLine } from './cartesian/linear-line.component';
+export { CardinalLine } from './cartesian/cardinal-line.component';
 export { BarLine } from './cartesian/bar-line.component';
 
 export { PolarAxis } from './polar/polar-axis.component';

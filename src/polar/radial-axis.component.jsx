@@ -18,7 +18,6 @@ export const RadialAxis = pure(({
 		min={min}
 		max={max}
 		scaler={linearScaler}
-		reference={reference}
 		ticks={generateLinearTicks(min, max, step, divisor, reference)}
 		{...attrs} />
 ), x => x !== 'data');

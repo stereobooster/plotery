@@ -18,7 +18,6 @@ export const AngularAxis = pure(({
 		min={min}
 		max={max}
 		scaler={linearScaler}
-		reference={reference}
 		ticks={generateLinearTicks(min, max, step, divisor, reference, false)}
 		{...attrs} />
 ), x => x !== 'data');

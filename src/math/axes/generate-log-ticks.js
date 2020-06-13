@@ -1,4 +1,4 @@
-export function generateLogTicks(min, max, step, divisor, reference, base) {
+export function generateLogTicks(min, max, step, divisor, reference, base = 10) {
 	const ticks = { major: [], minor: [] };
 	const log = Math.log(min / reference) / Math.log(base);
 	let current = reference * Math.pow(base, step * Math.floor(log / step));
