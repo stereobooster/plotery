@@ -7,13 +7,14 @@
 
 ![Screenshot of some Plotery graph](//bitbucket.org/shelacek/plotery/raw/master/screenshot.png)
 
-There are many plotting libraries in the wild. Many of them are enormous, all capable or poorly extensible. If there
-are some extensible lightweight library, then it is usually slow. **Plotery** is different - small, contains the bare
-essentials and it is fast. I simply need a library that is capable draw thousands of points in real time and which
-would fit into a small embedded device with a few spare kilobytes.
+There are many plotting libraries in the wild. Many of them are enormous, all capable or poorly
+extensible. If there are some extensible lightweight library, then it is usually slow. **Plotery**
+is different - small, contains the bare essentials and it is fast. I simply need a library that is
+capable draw thousands of points in real time and which would fit into a small embedded device with
+a few spare kilobytes.
 
-If you need charting library, that magically render any arbitrary data that you put in, **Plotery** is probably not
-for you.
+If you need charting library, that magically render any arbitrary data that you put in, **Plotery**
+is probably not for you.
 
 > ⚠ Please note this package is in the early alpha stage. Nothing is stable. If you encounter a bug,
 > please [create an issue].
@@ -47,10 +48,10 @@ Data must be provided in following format:
 [number, number][] | { [series: string]: [number, number][] };
 ```
 
-If data is an object, then chart lines must be provided with `series` props.
+If data is an object, then chart primitives, like lines must be provided with `series` props.
 
 
-## API
+## Components
 
 > Note: For full API of exported symbols, please see typings at
 > https://bitbucket.org/shelacek/plotery/src/master/src/types.d.ts.
@@ -95,7 +96,7 @@ Example of multiple axis:
 
 ### LinearAxis component
 
-Define linear cartesian axis.
+Define linear cartesian axis. Use `<CartesianAxis />` under the hood.
 
 #### Properties
 
@@ -106,44 +107,45 @@ Define linear cartesian axis.
 | `min`       | `number` (required)                     |                                        | Low axis limit.                                                               |
 | `max`       | `number` (required)                     |                                        | High axis limit.                                                              |
 | `position`  | `'start' ⎮ 'end'`                       | `'start'` for `'x'`, `'end'` for `'y'` | Position of axis labels.                                                      |
-| `hide`      | `boolean`                               | `false`                                | Don't display axis (it will be used only for coordinate system).              |
 | `reference` | `number`                                | `0`                                    | Reference value (origin).                                                     |
 | `step`      | `number`                                | *calculated from `min` and `max`*      | Step between consequence major ticks.                                         |
 | `divisor`   | `number`                                | `5`                                    | How many minor ticks are in one major tick.                                   |
 | `major`     | `boolean`                               | `false`                                | Show major grid.                                                              |
 | `minor`     | `boolean`                               | `false`                                | Show minor grid.                                                              |
 | `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                          | Labels for axis. Array of label strings must have same length as major ticks. |
+| `hide`      | `boolean`                               | `false`                                | Don't display axis (it will be used only for coordinate system).              |
 
 *¹`class` and `className` are equivalent.*
 
 
 ### LogAxis component
 
-Define logarithmic cartesian axis.
+Define logarithmic cartesian axis. Use `<CartesianAxis />` under the hood.
 
 #### Properties
 
-| Prop        | Type                                    | Default                                | Description                                                                   |
-| ----------- | --------------------------------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
-| `class`¹    | `string`                                | none                                   | Space-separated list of the classes applied to axis container.                |
-| `type`      | `'x' ⎮ 'y'` (required)                  |                                        | Type of axis.                                                                 |
-| `min`       | `number` (required)                     |                                        | Low axis limit.                                                               |
-| `max`       | `number` (required)                     |                                        | High axis limit.                                                              |
-| `position`  | `'start' ⎮ 'end'`                       | `'start'` for `'x'`, `'end'` for `'y'` | Position of axis labels.                                                      |
-| `hide`      | `boolean`                               | `false`                                | Don't display axis (it will be used only for coordinate system).              |
-| `reference` | `number`                                | `0`                                    | Reference value (origin).                                                     |
-| `step`      | `number`                                | *calculated from `min` and `max`*      | Step between consequence major ticks.                                         |
-| `divisor`   | `number`                                | `5`                                    | How many minor ticks are in one major tick.                                   |
-| `major`     | `boolean`                               | `false`                                | Show major grid.                                                              |
-| `minor`     | `boolean`                               | `false`                                | Show minor grid.                                                              |
-| `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                          | Labels for axis. Array of label strings must have same length as major ticks. |
+| Prop        | Type                                    | Default                                   | Description                                                                   |
+| ----------- | --------------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------- |
+| `class`¹    | `string`                                | none                                      | Space-separated list of the classes applied to axis container.                |
+| `type`      | `'x' ⎮ 'y'` (required)                  |                                           | Type of axis.                                                                 |
+| `min`       | `number` (required)                     |                                           | Low axis limit.                                                               |
+| `max`       | `number` (required)                     |                                           | High axis limit.                                                              |
+| `position`  | `'start' ⎮ 'end'`                       | `'start'` for `'x'`, `'end'` for `'y'`    | Position of axis labels.                                                      |
+| `reference` | `number`                                | `1`                                       | Reference value (origin).                                                     |
+| `base`      | `number`                                | `10`                                      | Logaritmic base for scaling.                                                  |
+| `step`      | `number`                                | *calculated from `min`, `max` and `base`* | Step between consequence major ticks.                                         |
+| `divisor`   | `number`                                | `9`                                       | How many minor ticks are in one major tick.                                   |
+| `major`     | `boolean`                               | `false`                                   | Show major grid.                                                              |
+| `minor`     | `boolean`                               | `false`                                   | Show minor grid.                                                              |
+| `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                             | Labels for axis. Array of label strings must have same length as major ticks. |
+| `hide`      | `boolean`                               | `false`                                   | Don't display axis (it will be used only for coordinate system).              |
 
 *¹`class` and `className` are equivalent.*
 
 
 ### LinearLine component
 
-Renders data series as X-Y linear line.
+Renders data series as X-Y linear line. Use `<CartesianLine />` under the hood.
 
 #### Properties
 
@@ -156,12 +158,14 @@ Renders data series as X-Y linear line.
 
 *¹`class` and `className` are equivalent.*
 
-Any other passed property will be added to `LinearLine` container.
+Any other passed property will be added to `LinearLine` container. This can be useful if you need to
+set some SVG attributes.
 
 
 ### CardinalLine component
 
-Renders data series as X-Y line with Catmull-Rome spline interpolation.
+Renders data series as X-Y line with Catmull-Rome spline interpolation. Use `<CartesianLine />`
+under the hood.
 
 #### Properties
 
@@ -175,7 +179,8 @@ Renders data series as X-Y line with Catmull-Rome spline interpolation.
 
 *¹`class` and `className` are equivalent.*
 
-Any other passed property will be added to `CardinalLine` container.
+Any other passed property will be added to `CardinalLine` container. This can be useful if you need to
+set some SVG attributes.
 
 
 ### BarLine component
@@ -191,7 +196,89 @@ Renders data series as discrete bars.
 
 *¹`class` and `className` are equivalent.*
 
-Any other passed property will be added to `BarLine` container.
+Any other passed property will be added to `BarLine` container. This can be useful if you need to
+set some SVG attributes.
+
+
+### RadialAxis component
+
+Define radial axis (r) of polar charts. Use `<PolarAxis />` under the hood.
+
+#### Properties
+
+| Prop        | Type                                    | Default                                | Description                                                                   |
+| ----------- | --------------------------------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| `class`¹    | `string`                                | none                                   | Space-separated list of the classes applied to axis container.                |
+| `min`       | `number` (required)                     |                                        | Low axis limit.                                                               |
+| `max`       | `number` (required)                     |                                        | High axis limit.                                                              |
+| `reference` | `number`                                | `0`                                    | Reference value (origin).                                                     |
+| `step`      | `number`                                | *calculated from `min` and `max`*      | Step between consequence major ticks.                                         |
+| `divisor`   | `number`                                | `5`                                    | How many minor ticks are in one major tick.                                   |
+| `major`     | `boolean`                               | `false`                                | Show major grid.                                                              |
+| `minor`     | `boolean`                               | `false`                                | Show minor grid.                                                              |
+| `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                          | Labels for axis. Array of label strings must have same length as major ticks. |
+| `hide`      | `boolean`                               | `false`                                | Don't display axis (it will be used only for coordinate system).              |
+
+*¹`class` and `className` are equivalent.*
+
+
+### AngularAxis component
+
+Define angular (theta) axis of polar charts. Use `<PolarAxis />` under the hood.
+
+#### Properties
+
+| Prop        | Type                                    | Default                                | Description                                                                   |
+| ----------- | --------------------------------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| `class`¹    | `string`                                | none                                   | Space-separated list of the classes applied to axis container.                |
+| `min`       | `number` (required)                     |                                        | Low axis limit.                                                               |
+| `max`       | `number` (required)                     |                                        | High axis limit.                                                              |
+| `reference` | `number`                                | `0`                                    | Reference value (origin).                                                     |
+| `step`      | `number`                                | *calculated from `min` and `max`*      | Step between consequence major ticks.                                         |
+| `divisor`   | `number`                                | `5`                                    | How many minor ticks are in one major tick.                                   |
+| `major`     | `boolean`                               | `false`                                | Show major grid.                                                              |
+| `minor`     | `boolean`                               | `false`                                | Show minor grid.                                                              |
+| `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                          | Labels for axis. Array of label strings must have same length as major ticks. |
+| `hide`      | `boolean`                               | `false`                                | Don't display axis (it will be used only for coordinate system).              |
+
+*¹`class` and `className` are equivalent.*
+
+
+### PolarLine component
+
+Renders data series as linear line on polar chart.
+
+#### Properties
+
+| Prop          | Type                                    | Default  | Description                                                    |
+| ------------- | --------------------------------------- | -------- | -------------------------------------------------------------- |
+| `class`¹      | `string`                                | none     | Space-separated list of the classes applied to line container. |
+| `series`      | `string`                                | none     | Defines a key to series in the data object, if specified.      |
+| `interpolate` | `{ (points: ChartSeriesData): string }` | `linear` | Function for interpolation.                                    |
+
+*¹`class` and `className` are equivalent.*
+
+Any other passed property will be added to `PolarLine` container. This can be useful if you need to
+set some SVG attributes.
+
+
+### PolarSector component
+
+Renders circular sectors on polar chart. Each data point represents start-end tuple on angular axis.
+
+#### Properties
+
+| Prop     | Type     | Default | Description                                                    |
+| -------- | -------- | ------- | -------------------------------------------------------------- |
+| `class`¹ | `string` | none    | Space-separated list of the classes applied to line container. |
+| `series` | `string` | none    | Defines a key to series in the data object, if specified.      |
+| `inner`  | `number` | `0`     | Inner radius of sector on radial axis.                         |
+| `outer`  | `number` | `100`   | Outer radius of sector on radial axis.                         |
+
+*¹`class` and `className` are equivalent.*
+
+Any other passed property will be added to `PolarSector` container. This can be useful if you need to
+set some SVG attributes.
 
 
 ### Zoom component
@@ -221,6 +308,103 @@ _handleZoom = zoom => this.setState({ zoom });
 | `onZoom`   | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
 
 
+## Low-level components
+
+The following components and functions can be used for easier extensibility. None of them implement
+the `shouldComponentUpdate` method.
+
+
+### CartesianAxis component
+
+Define generic cartesian axis.
+
+#### Properties
+
+| Prop        | Type                                    | Default                                | Description                                                                   |
+| ----------- | --------------------------------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| `class`¹    | `string`                                | none                                   | Space-separated list of the classes applied to axis container.                |
+| `type`      | `'x' ⎮ 'y'` (required)                  |                                        | Type of axis.                                                                 |
+| `min`       | `number` (required)                     |                                        | Low axis limit.                                                               |
+| `max`       | `number` (required)                     |                                        | High axis limit.                                                              |
+| `position`  | `'start' ⎮ 'end'`                       | `'start'` for `'x'`, `'end'` for `'y'` | Position of axis labels.                                                      |
+| `reference` | `number` (required)                     |                                        | Reference value (origin).                                                     |
+| `scaler`    | `{ (value: number, min: number, max: number, reverse?: boolean): number }` (required) | | Function that translate coordinates into/from chart positions.         |
+| `ticks`     | `{ major: number[]; minor: number[] }` (required) |                              | Positions of mirror and majors grid ticks.                                    |
+| `major`     | `boolean`                               | `false`                                | Show major grid.                                                              |
+| `minor`     | `boolean`                               | `false`                                | Show minor grid.                                                              |
+| `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                          | Labels for axis. Array of label strings must have same length as major ticks. |
+| `hide`      | `boolean`                               | `false`                                | Don't display axis (it will be used only for coordinate system).              |
+
+*¹`class` and `className` are equivalent.*
+
+
+### CartesianLine component
+
+Renders data series as X-Y linear line.
+
+#### Properties
+
+| Prop          | Type                                    | Default  | Description                                                    |
+| ------------- | --------------------------------------- | -------- | -------------------------------------------------------------- |
+| `class`¹      | `string`                                | none     | Space-separated list of the classes applied to line container. |
+| `series`      | `string`                                | none     | Defines a key to series in the data object, if specified.      |
+| `interpolate` | `{ (points: ChartSeriesData): string }` | `linear` | Function for interpolation.                                    |
+| `line`        | `boolean`                               | `true`   | Draw line.                                                     |
+| `area`        | `boolean`                               | `false`  | Draw area filled to 'y' axis reference.                        |
+
+*¹`class` and `className` are equivalent.*
+
+Any other passed property will be added to `CartesianLine` container. This can be useful if you need to
+set some SVG attributes.
+
+
+### PolarAxis component
+
+Define generic polar axis.
+
+#### Properties
+
+| Prop        | Type                                    | Default                                | Description                                                                   |
+| ----------- | --------------------------------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| `class`¹    | `string`                                | none                                   | Space-separated list of the classes applied to axis container.                |
+| `type`      | `'r' ⎮ 't'` (required)                  |                                        | Type of axis.                                                                 |
+| `min`       | `number` (required)                     |                                        | Low axis limit.                                                               |
+| `max`       | `number` (required)                     |                                        | High axis limit.                                                              |
+| `scaler`    | `{ (value: number, min: number, max: number, reverse?: boolean): number }` (required) | | Function that translate coordinates into/from chart positions.         |
+| `ticks`     | `{ major: number[]; minor: number[] }` (required) |                              | Positions of mirror and majors grid ticks.                                    |
+| `major`     | `boolean`                               | `false`                                | Show major grid.                                                              |
+| `minor`     | `boolean`                               | `false`                                | Show minor grid.                                                              |
+| `labels`    | `string[] ⎮ { (tick: number): string }` | `x => ‘${x}‘`                          | Labels for axis. Array of label strings must have same length as major ticks. |
+| `hide`      | `boolean`                               | `false`                                | Don't display axis (it will be used only for coordinate system).              |
+
+*¹`class` and `className` are equivalent.*
+
+
+### Interpolation functions
+
+`function linear(points: ChartSeriesData): string`
+`function cardinal(points: ChartSeriesData, tension?: number): string;`
+
+
+### Scaler functions
+
+`function linearScaler(value: number, min: number, max: number, reverse?: boolean): number;`
+`function logScaler(value: number, min: number, max: number, reverse?: boolean): number;`
+
+
+### Grid step estimation functions
+
+`function estimateUniformStep(min: number, max: number, count?: number): number;`
+`function estimateLinearStep(min: number, max: number, count?: number, dividers?: number[]): number;`
+`function estimateLogStep(min: number, max: number, base?: number, count?: number): number;`
+
+
+### Functions for generate grid ticks
+
+`function generateLinearTicks(min: number, max: number, step: number, divisor: number, reference: number, closed?: boolean): { major: number[]; minor: number[] };`
+`function generateLogTicks(min: number, max: number, step: number, divisor: number, reference: number, base?: number): { major: number[]; minor: number[] };`
+
+
 ## Styles
 
 **Plotery** uses CSS to style its charts, so you must include it to your bundle. Please see
@@ -229,7 +413,6 @@ _handleZoom = zoom => this.setState({ zoom });
 
 ## Todos
 
-- Update documentation and typings.
 - Target size ~ 5kiB (minified + gzip)
 
 Interactions:
