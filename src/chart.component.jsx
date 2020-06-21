@@ -11,7 +11,7 @@ export class Chart extends Component {
 
 	componentDidMount() {
 		this._teardownEvents = registerEvents(window, {
-			resize: [debounce(this._updateRect, 300), { passive: true }]
+			resize: [debounce(this._updateRect, 100), { passive: true }]
 		});
 		this._updateRect();
 	}
