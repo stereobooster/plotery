@@ -7,6 +7,7 @@ import { registerEvents } from './utils/register-events';
 import { Surface } from './surface.component';
 
 export class Chart extends Component {
+	_ref = null;
 	_teardownEvents = null;
 
 	componentDidMount() {
@@ -20,19 +21,22 @@ export class Chart extends Component {
 		this._teardownEvents && this._teardownEvents();
 	}
 
+	_setRef = el => this._ref = el;
+
 	_updateRect = () => {
-		const rect = getBoundingBox(this);
+		const rect = getBoundingBox(this._ref);
 		if (!shallowCompare(this.state.rect, rect)) {
 			this.setState({ rect });
 		}
 	};
 
 	render({ children, data }, { rect }) {
+		const host = this._ref;
 		return (
 			<div className="plotery">
-				<svg overflow="visible">
+				<svg overflow="visible" ref={this._setRef}>
 					<Surface>
-						{rect && withProps(children, { data, rect })}
+						{host && rect && withProps(children, { data, rect, host })}
 					</Surface>
 				</svg>
 			</div>

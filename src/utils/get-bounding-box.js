@@ -1,5 +1,5 @@
-export function getBoundingBox(component) {
-	const rect = component.base.getBoundingClientRect();
+export function getBoundingBox(el) {
+	const rect = el.getBoundingClientRect();
 	const { scrollLeft, scrollTop } = document.documentElement;
 	return {
 		left: rect.left + scrollLeft,

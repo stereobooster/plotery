@@ -237,7 +237,7 @@ export declare class PolarSector extends Component<PolarSectorProps> {
 
 export interface ZoomProps extends Partial<ChartAttributes> {
 	restrict?: 'x' | 'y';
-	onZoom?: { (limits?: number[]): void };
+	onLimits?: { (limits?: number[]): void };
 }
 
 export declare class Zoom extends Component<ZoomProps> {

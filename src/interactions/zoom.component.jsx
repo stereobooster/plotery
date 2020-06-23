@@ -1,35 +1,11 @@
 import { h, Component } from 'preact';
-import { shallowCompare } from '../utils/shallow-compare';
-import { registerEvents } from '../utils/register-events';
+import { Pointer } from './pointer.component';
 
 export class Zoom extends Component {
-	_teardownEvents = null;
-
 	state = {
 		begin: null,
 		end: null
 	};
-
-	componentWillUnmount() {
-		this._unregisterEvents();
-	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		return !shallowCompare(this.props, nextProps, x => x === 'rect')
-			|| !shallowCompare(this.state, nextState);
-	}
-
-	_registerEvents() {
-		this._teardownEvents = registerEvents(window, {
-			pointermove: [this._handlePointerMove, { passive: true }],
-			pointerup: [this._handlePointerUp]
-		});
-	}
-
-	_unregisterEvents() {
-		this._teardownEvents && this._teardownEvents();
-		this._teardownEvents = null;
-	}
 
 	_clamp(value, min, max) {
 		return Math.min(Math.max(value, min), max);
@@ -44,7 +20,6 @@ export class Zoom extends Component {
 	}
 
 	_handlePointerDown = event => {
-		this._registerEvents();
 		!this.state.begin && this.setState({ begin: this._getRelativeCoords(event) });
 		event.preventDefault();
 	};
@@ -54,27 +29,8 @@ export class Zoom extends Component {
 	};
 
 	_handlePointerUp = event => {
-		this._unregisterEvents();
-		const { onZoom, restrict } = this.props;
-		if (onZoom) {
-			if (this.state.end) {
-				const limits = this._scaleCoords();
-				switch (restrict) {
-					case 'x':
-						onZoom([limits[0], limits[2]]);
-						break;
-					case 'y':
-						onZoom([limits[1], limits[3]]);
-						break;
-					default:
-						onZoom(limits);
-						break;
-				}
-			}
-			else {
-				onZoom(null);
-			}
-		}
+		const { onLimits } = this.props;
+		onLimits && onLimits(this.state.end ? this._scaleCoords() : null);
 		this.setState({ begin: null, end: null });
 		event.preventDefault();
 	};
@@ -120,18 +76,16 @@ export class Zoom extends Component {
 		return `M${x1},${y1}H${x2}V${y2}H${x1}Z`;
 	}
 
-	render({ rect }, { begin, end }) {
+	render({ host }, { begin, end }) {
 		return (
 			<g className="zoom">
-				{end && <path className="backdrop" d={this._calcBackdropPath(begin, end)} />}
-				{end && <path className="outline" d={this._calcOutlinePath(begin, end)} />}
-				<rect
-					className="event-sink"
-					x="0"
-					y="0"
-					width={rect.width}
-					height={rect.height}
-					onPointerDown={this._handlePointerDown} />
+				{end && (<path className="backdrop" d={this._calcBackdropPath(begin, end)} />)}
+				{end && (<path className="outline" d={this._calcOutlinePath(begin, end)} />)}
+				<Pointer
+					host={host}
+					onPointerDown={this._handlePointerDown}
+					onPointerMove={this._handlePointerMove}
+					onPointerUp={this._handlePointerUp} />
 			</g>
 		);
 	}

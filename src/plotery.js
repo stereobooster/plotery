@@ -18,6 +18,7 @@ export { PolarLine } from './polar/polar-line.component';
 export { PolarSector } from './polar/polar-sector.component';
 
 export { Zoom } from './interactions/zoom.component';
+export { Pointer } from './interactions/pointer.component';
 
 export { linear } from './math/interpolations/linear';
 export { cardinal } from './math/interpolations/cardinal';

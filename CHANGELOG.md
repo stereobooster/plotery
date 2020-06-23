@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- **BREAKING**: `Zoom.onZoom` is renamed to `Zoom.onLimits` and always pass
+  full [x0, y0, x1, y1] rect. `Zoom.restrict` is now only presentional.
+
+
 ### Fixed
 
 - Fix axis labels positions.
