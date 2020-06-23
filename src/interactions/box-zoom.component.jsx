@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import { Pointer } from './pointer.component';
 
-export class Zoom extends Component {
+export class BoxZoom extends Component {
 	state = {
 		begin: null,
 		end: null
@@ -78,7 +78,7 @@ export class Zoom extends Component {
 
 	render({ host }, { begin, end }) {
 		return (
-			<g className="zoom">
+			<g className="box-zoom">
 				{end && (<path className="backdrop" d={this._calcBackdropPath(begin, end)} />)}
 				{end && (<path className="outline" d={this._calcOutlinePath(begin, end)} />)}
 				<Pointer

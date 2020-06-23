@@ -13,13 +13,13 @@ $plotery-series-colors: (
 
 @import 'axis';
 @import 'plot';
-@import 'zoom';
+@import 'interactions';
 
 @mixin plotery($margin: $plotery-margin) {
 	.plotery {
 		@include plotery-plot();
 		@include plotery-axis();
-		@include plotery-zoom();
+		@include plotery-interactions();
 
 		@for $i from 0 to length($plotery-series-colors) {
 			@include plotery-plot-color(

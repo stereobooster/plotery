@@ -3,13 +3,13 @@ $plotery-backdrop-opacity: 0.05 !default;
 $plotery-outline-color: black !default;
 $plotery-outline-opacity: 0.3 !default;
 
-@mixin plotery-zoom(
+@mixin plotery-interactions(
 	$backdrop-color: $plotery-backdrop-color,
 	$backdrop-opacity: $plotery-backdrop-opacity,
 	$outline-color: $plotery-outline-color,
 	$outline-opacity: $plotery-outline-opacity
 ) {
-	.zoom {
+	.box-zoom {
 		.backdrop {
 			fill: $backdrop-color;
 			fill-opacity: $backdrop-opacity;
@@ -22,10 +22,6 @@ $plotery-outline-opacity: 0.3 !default;
 			stroke-width: 1px;
 			stroke-opacity: $outline-opacity;
 			shape-rendering: crispEdges;
-		}
-
-		.event-sink {
-			opacity: 0;
 		}
 	}
 }

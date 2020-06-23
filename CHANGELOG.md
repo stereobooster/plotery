@@ -10,8 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- **BREAKING**: `Zoom.onZoom` is renamed to `Zoom.onLimits` and always pass
-  full [x0, y0, x1, y1] rect. `Zoom.restrict` is now only presentional.
+- **BREAKING**: `Zoom` component is renamed to `BoxZoom` and `Zoom.onZoom`
+  to `BoxZoom.onLimits`. `BoxZoom.restrict` is now only presentional,
+  `BoxZoom.onLimits` always pass full [x0, y0, x1, y1] rect.
 
 
 ### Fixed
