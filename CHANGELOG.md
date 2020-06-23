@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Add `Pan` and `WheelZoom` components for axis manipulations.
+
+
 ### Changed
 
 - **BREAKING**: `Zoom` component is renamed to `BoxZoom` and `Zoom.onZoom`
