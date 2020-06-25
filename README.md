@@ -476,27 +476,27 @@ Helper component, that register `wheel` event to passed `host` element.
 
 ### Interpolation functions
 
-`function linear(points: ChartSeriesData): string`
-`function cardinal(points: ChartSeriesData, tension?: number): string;`
+- `function linear(points: ChartSeriesData): string`
+- `function cardinal(points: ChartSeriesData, tension?: number): string;`
 
 
 ### Scaler functions
 
-`function linearScaler(value: number, min: number, max: number, reverse?: boolean): number;`
-`function logScaler(value: number, min: number, max: number, reverse?: boolean): number;`
+- `function linearScaler(value: number, min: number, max: number, reverse?: boolean): number;`
+- `function logScaler(value: number, min: number, max: number, reverse?: boolean): number;`
 
 
 ### Grid step estimation functions
 
-`function estimateUniformStep(min: number, max: number, count?: number): number;`
-`function estimateLinearStep(min: number, max: number, count?: number, dividers?: number[]): number;`
-`function estimateLogStep(min: number, max: number, base?: number, count?: number): number;`
+- `function estimateUniformStep(min: number, max: number, count?: number): number;`
+- `function estimateLinearStep(min: number, max: number, count?: number, dividers?: number[]): number;`
+- `function estimateLogStep(min: number, max: number, base?: number, count?: number): number;`
 
 
 ### Functions for generate grid ticks
 
-`function generateLinearTicks(min: number, max: number, step: number, divisor: number, reference: number, closed?: boolean): { major: number[]; minor: number[] };`
-`function generateLogTicks(min: number, max: number, step: number, divisor: number, reference: number, base?: number): { major: number[]; minor: number[] };`
+- `function generateLinearTicks(min: number, max: number, step: number, divisor: number, reference: number, closed?: boolean): { major: number[]; minor: number[] };`
+- `function generateLogTicks(min: number, max: number, step: number, divisor: number, reference: number, base?: number): { major: number[]; minor: number[] };`
 
 
 ## Styles
