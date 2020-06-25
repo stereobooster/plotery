@@ -16,6 +16,7 @@ export type Axes = { [type: string]: Axis };
 
 export interface ChartAttributes {
 	data: ChartData;
+	host: HTMLElement;
 	rect: Rect;
 	axes: Axes;
 	updateAxis: { (axis: Axis): void };
@@ -235,12 +236,48 @@ export declare class PolarSector extends Component<PolarSectorProps> {
 	render(): ComponentChild;
 }
 
-export interface ZoomProps extends Partial<ChartAttributes> {
+export interface PointerProps {
+	host: HTMLElement;
+	onPointerDown?: { (event: PointerEvent): void };
+	onPointerMove?: { (event: PointerEvent): void };
+	onPointerUp?: { (event: PointerEvent): void };
+}
+
+export declare class Pointer extends Component<PointerProps> {
+	render(): ComponentChild;
+}
+
+export interface WheelProps {
+	host: HTMLElement;
+	onWheel?: { (event: WheelEvent): void };
+}
+
+export declare class Wheel extends Component<WheelProps> {
+	render(): ComponentChild;
+}
+
+export interface BoxZoomProps extends Partial<ChartAttributes> {
 	restrict?: 'x' | 'y';
 	onLimits?: { (limits?: number[]): void };
 }
 
-export declare class Zoom extends Component<ZoomProps> {
+export declare class BoxZoom extends Component<BoxZoomProps> {
+	render(): ComponentChild;
+}
+
+export interface PanProps extends Partial<ChartAttributes> {
+	onLimits?: { (limits?: number[]): void };
+}
+
+export declare class Pan extends Component<PanProps> {
+	render(): ComponentChild;
+}
+
+export interface WheelZoomProps extends Partial<ChartAttributes> {
+	onLimits?: { (limits?: number[]): void };
+}
+
+export declare class WheelZoom extends Component<WheelZoomProps> {
 	render(): ComponentChild;
 }
 

@@ -56,6 +56,32 @@ If data is an object, then chart primitives, like lines must be provided with `s
 > Note: For full API of exported symbols, please see typings at
 > https://bitbucket.org/shelacek/plotery/src/master/src/types.d.ts.
 
+Global components:
+
+- [Chart component](#chart-component)
+- [Surface component](#surface-component)
+
+Cartesian chart components:
+
+- [LinearAxis component](#linearaxis-component)
+- [LogAxis component](#logaxis-component)
+- [LinearLine component](#linearline-component)
+- [CardinalLine component](#cardinalline-component)
+- [BarLine component](#barline-component)
+
+Polar chart components:
+
+- [RadialAxis component](#radialaxis-component)
+- [AngularAxis component](#angularaxis-component)
+- [PolarLine component](#polarline-component)
+- [PolarSector component](#polarsector-component)
+
+Interaction components:
+
+- [BoxZoom component](#boxzoom-component)
+- [Pan component](#pan-component)
+- [WheelZoom component](#wheelzoom-component)
+
 
 ### Chart component
 
@@ -281,22 +307,22 @@ Any other passed property will be added to `PolarSector` container. This can be 
 set some SVG attributes.
 
 
-### Zoom component
+### BoxZoom component
 
-Include controls to enable zooming with a pointer device.
+Enables drawing zoom box with pointer device over chart canvas. Event `onLimits` return array with dragged rect in format `[x0, y0, x1, y1]`. Single click without dragging return `null`.
 
 Example of usage:
 
 ```jsx
-_handleZoom = zoom => this.setState({ zoom });
+_handleLimits = limits => this.setState({ limits });
 
 // ...
 
 <Chart data={data}>
-	<LinearAxis type="x" min={zoom ? zoom[0] : 0} max={zoom ? zoom[1] : 100} />
+	<LinearAxis type="x" min={limits ? limits[0] : 0} max={limits ? limits[2] : 100} />
 	<LinearAxis type="y" min={-10} max={10} />
 	<LinearLine />
-	<Zoom restrict="x" onZoom={this._handleZoom} />
+	<BoxZoom restrict="x" onLimits={this._handleLimits} />
 </Chart>
 ```
 
@@ -305,13 +331,54 @@ _handleZoom = zoom => this.setState({ zoom });
 | Prop       | Type                            | Default | Description                                    |
 | ---------- | ------------------------------- | ------- | ---------------------------------------------- |
 | `restrict` | `'x' ⎮ 'y'`                     | none    | Optionally restrict to 'x' or 'y' axis.        |
-| `onZoom`   | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
+| `onLimits` | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
+
+
+### Pan component
+
+Enables moving with chart axis.
+
+Take look at `BoxZoom` for example.
+
+#### Properties
+
+| Prop       | Type                            | Default | Description                                    |
+| ---------- | ------------------------------- | ------- | ---------------------------------------------- |
+| `onLimits` | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
+
+
+### WheelZoom component
+
+Enables zooming with wheel or touchpad.
+
+Take look at `BoxZoom` for example.
+
+#### Properties
+
+| Prop       | Type                            | Default | Description                                    |
+| ---------- | ------------------------------- | ------- | ---------------------------------------------- |
+| `onLimits` | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
 
 
 ## Low-level components
 
 The following components and functions can be used for easier extensibility. None of them implement
 the `shouldComponentUpdate` method.
+
+Components:
+
+- [CartesianAxis component](cartesianaxis-component)
+- [CartesianLine component](cartesianline-component)
+- [PolarAxis component](polaraxis-component)
+- [Pointer component](pointer-component)
+- [Wheel component](wheel-component)
+
+Functions:
+
+- [Interpolation functions](interpolation-functions)
+- [Scaler functions](scaler-functions)
+- [Grid step estimation functions](grid-step-estimation-functions)
+- [Functions for generate grid ticks](functions-for-generate-grid-ticks)
 
 
 ### CartesianAxis component
@@ -380,6 +447,33 @@ Define generic polar axis.
 *¹`class` and `className` are equivalent.*
 
 
+### Pointer component
+
+Helper component, that register `pointerdown` event to passed `host` element. After `pointerdown`
+event is raised, component register `pointermove` and `pointerup` to `window`.
+
+#### Properties
+
+| Prop            | Type                              | Default | Description                                      |
+| --------------- | --------------------------------- | ------- | ------------------------------------------------ |
+| `host`          | `HTMLElement` (required)          |         | Element to registred `pointerdown` event.        |
+| `onPointerDown` | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointerdown` event. |
+| `onPointerMove` | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointermove` event. |
+| `onPointerUp`   | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointerup` event.   |
+
+
+### Wheel component
+
+Helper component, that register `wheel` event to passed `host` element.
+
+#### Properties
+
+| Prop      | Type                            | Default | Description                                |
+| --------- | ------------------------------- | ------- | ------------------------------------------ |
+| `host`    | `HTMLElement` (required)        |         | Element to registred `wheel` event.        |
+| `onWheel` | `{ (event: WheelEvent): void }` | none    | Callback, that is called on `wheel` event. |
+
+
 ### Interpolation functions
 
 `function linear(points: ChartSeriesData): string`
@@ -413,11 +507,8 @@ Define generic polar axis.
 
 ## Todos
 
+- Improve documentation
 - Target size ~ 5kiB (minified + gzip)
-
-Interactions:
-
-- `ZoomAndPan`
-- `Tooltip`
+- `Tooltip` component
 
 **PRs are welcome!**
