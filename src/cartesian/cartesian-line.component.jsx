@@ -11,7 +11,7 @@ export class CartesianLine extends Component {
 		return `${path}L${points[points.length - 1][0]},${zero}L${points[0][0]},${zero}Z`;
 	}
 
-	render({ className, data, rect, axes, series, line, area, interpolate = linear, ...attrs }) {
+	render({ className, host, data, rect, axes, series, line, area, interpolate = linear, ...attrs }) {
 		const points = data && (series ? data[series] : data);
 		if (!points || !points.length || !axes.x || !axes.y) {
 			return null;

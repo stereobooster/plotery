@@ -11,7 +11,7 @@ export const BarLine = pure(class extends Component {
 		return points.reduce((acc, x) => `${acc}M${x[0]},${x[1]}V${zero}`, '');
 	}
 
-	render({ className, data, rect, axes, series, ...attrs }) {
+	render({ className, host, data, rect, axes, series, ...attrs }) {
 		const points = data && (series ? data[series] : data);
 		if (!points || !points.length || !axes.x || !axes.y) {
 			return null;

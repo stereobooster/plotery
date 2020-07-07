@@ -29,7 +29,7 @@ export const PolarSector = pure(class extends Component {
 			+ 'Z';
 	}
 
-	render({ className, data, rect, axes, series, inner = 0, outer = 100, ...attrs }) {
+	render({ className, host, data, rect, axes, series, inner = 0, outer = 100, ...attrs }) {
 		const points = data && (series ? data[series] : data);
 		if (!points || !points.length || !axes.r || !axes.t) {
 			return null;

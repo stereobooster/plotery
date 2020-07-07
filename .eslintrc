@@ -114,6 +114,7 @@
 		"no-restricted-globals": "error",
 		"no-shadow": "error",
 		"no-shadow-restricted-names": "error",
+		"no-unused-vars": ["error", { "ignoreRestSiblings": true }],
 		"no-use-before-define": "error",
 
 		// Node.js and CommonJS

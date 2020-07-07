@@ -13,7 +13,7 @@ export const PolarLine = pure(class extends Component {
 		});
 	}
 
-	render({ className, data, rect, axes, series, interpolate = linear, ...attrs }) {
+	render({ className, host, data, rect, axes, series, interpolate = linear, ...attrs }) {
 		const points = data && (series ? data[series] : data);
 		if (!points || !points.length || !axes.r || !axes.t) {
 			return null;
