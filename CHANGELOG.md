@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 There are no changes yet.
 
 
+## [0.4.1] - 2020-07-07
+
+### Fixed
+
+- Don't propagate `host` prop to `*Line` and `PolarSector` attributes.
+
+
 ## [0.4.0] - 2020-06-25
 
 ### Added
@@ -83,7 +90,8 @@ There are no changes yet.
 - Initial version.
 
 
-[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v0.4.0
+[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v0.4.1
+[0.4.1]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.4.1..v0.4.0
 [0.4.0]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.4.0..v0.3.0
 [0.3.0]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.3.0..v0.2.1
 [0.2.1]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.2.1..v0.2.0
