@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+There are no changes yet.
+
+
+## [0.4.2] - 2020-08-17
+
 ### Fixed
 
 - `NaN` in max/min props of axis no longer cause freeze of the browser.
@@ -93,7 +98,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial version.
 
 
-[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v0.4.1
+[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v0.4.2
+[0.4.2]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.4.2..v0.4.1
 [0.4.1]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.4.1..v0.4.0
 [0.4.0]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.4.0..v0.3.0
 [0.3.0]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.3.0..v0.2.1
