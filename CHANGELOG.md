@@ -8,7 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-There are no changes yet.
+### Fixed
+
+- `NaN` in max/min props of axis no longer cause freeze of the browser.
+  `NaN` values are still invalid ;-).
 
 
 ## [0.4.1] - 2020-07-07
