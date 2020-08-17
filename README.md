@@ -367,18 +367,18 @@ the `shouldComponentUpdate` method.
 
 Components:
 
-- [CartesianAxis component](cartesianaxis-component)
-- [CartesianLine component](cartesianline-component)
-- [PolarAxis component](polaraxis-component)
-- [Pointer component](pointer-component)
-- [Wheel component](wheel-component)
+- [CartesianAxis component](#cartesianaxis-component)
+- [CartesianLine component](#cartesianline-component)
+- [PolarAxis component](#polaraxis-component)
+- [Pointer component](#pointer-component)
+- [Wheel component](#wheel-component)
 
 Functions:
 
-- [Interpolation functions](interpolation-functions)
-- [Scaler functions](scaler-functions)
-- [Grid step estimation functions](grid-step-estimation-functions)
-- [Functions for generate grid ticks](functions-for-generate-grid-ticks)
+- [Interpolation functions](#interpolation-functions)
+- [Scaler functions](#scaler-functions)
+- [Grid step estimation functions](#grid-step-estimation-functions)
+- [Functions for generate grid ticks](#functions-for-generate-grid-ticks)
 
 
 ### CartesianAxis component
