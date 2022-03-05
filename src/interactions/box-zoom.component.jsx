@@ -1,4 +1,5 @@
 import { h, Component } from 'preact';
+import { getRelativeCoords } from '../utils/get-relative-coords';
 import { Pointer } from './pointer.component';
 
 export class BoxZoom extends Component {
@@ -7,25 +8,17 @@ export class BoxZoom extends Component {
 		end: null
 	};
 
-	_clamp(value, min, max) {
-		return Math.min(Math.max(value, min), max);
-	}
-
-	_getRelativeCoords(event) {
-		const { left, top, width, height } = this.props.rect;
-		return [
-			this._clamp(event.pageX - left, 0, width),
-			this._clamp(event.pageY - top, 0, height)
-		];
-	}
-
 	_handlePointerDown = event => {
-		!this.state.begin && this.setState({ begin: this._getRelativeCoords(event) });
+		!this.state.begin && this.setState({
+			begin: getRelativeCoords(event, this.props.rect)
+		});
 		event.preventDefault();
 	};
 
 	_handlePointerMove = event => {
-		this.state.begin && this.setState({ end: this._getRelativeCoords(event) });
+		this.state.begin && this.setState({
+			end: getRelativeCoords(event, this.props.rect)
+		});
 	};
 
 	_handlePointerUp = event => {
