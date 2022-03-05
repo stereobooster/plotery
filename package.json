@@ -10,7 +10,7 @@
 	"scripts": {
 		"prebuild": "rm -rf dist",
 		"build:js": "rollup -c && cp src/types.d.ts dist/plotery.d.ts",
-		"build:scss": "node-sass styles/plotery.scss dist/css/plotery.css && cp -r styles dist/scss",
+		"build:scss": "sass styles/plotery.scss dist/css/plotery.css && cp -r styles dist/scss",
 		"build": "yarn run build:js && yarn run build:scss",
 		"prepare": "yarn run build",
 		"lint:js": "eslint --ext .js --ext .jsx src",
@@ -42,12 +42,12 @@
 		"babel-eslint": "^9.0.0",
 		"eslint": "^5.1.0",
 		"eslint-plugin-react": "^7.10.0",
-		"node-sass": "^4.9.0",
 		"preact": "^8.3.1",
 		"rollup": "^0.62.0",
 		"rollup-plugin-babel": "^4.0.0-beta.7",
 		"rollup-plugin-node-resolve": "^3.3.0",
 		"rollup-plugin-terser": "^1.0.1",
+		"sass": "^1.49.9",
 		"sass-lint": "^1.12.1"
 	},
 	"peerDependencies": {
