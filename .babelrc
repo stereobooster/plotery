@@ -4,8 +4,10 @@
 		"targets": { "browsers": ["> 1%", "not ie > 0", "not dead"] }
 	}]],
 	"plugins": [
-		["@babel/plugin-proposal-class-properties", { loose: true }],
-		['@babel/plugin-proposal-object-rest-spread', { loose: true, useBuiltIns: true }],
+		["@babel/plugin-proposal-class-properties", { "loose": true }],
+		["@babel/plugin-proposal-private-methods", { "loose": true }],
+		["@babel/plugin-proposal-private-property-in-object", { "loose": true }],
+		["@babel/plugin-proposal-object-rest-spread", { "loose": true, "useBuiltIns": true }],
 		["@babel/transform-react-jsx", { "pragma": "h", "useBuiltIns": true }]
 	]
 }
