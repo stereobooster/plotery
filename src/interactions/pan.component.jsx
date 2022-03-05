@@ -9,16 +9,16 @@ export class Pan extends Component {
 	_handlePointerDown = event => {
 		this.setState({ reference: [event.pageX, event.pageY] });
 		event.preventDefault();
-	}
+	};
 
 	_handlePointerMove = event => {
 		this._emitChangeEvent(event);
-	}
+	};
 
 	_handlePointerUp = event => {
 		this._emitChangeEvent(event);
 		event.preventDefault();
-	}
+	};
 
 	_emitChangeEvent(event) {
 		const { axes, rect, onLimits } = this.props;

@@ -20,7 +20,7 @@ export class Tooltip extends Component {
 		this.setState({ position: getRelativeCoords(event, this.props.rect) });
 	};
 
-	render({ host, children, ...attrs }, { position }) {
+	render({ children, host, ...attrs }, { position }) {
 		return (
 			<g className="tooltip">
 				{position && withProps(children, { ...attrs, position })}
