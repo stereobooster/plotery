@@ -16,14 +16,11 @@ export class Pointer extends Component {
 
 	_registerStartupEvents() {
 		this._teardownStartupEvents = registerEvents(this.props.host, {
-			pointerdown: [this.props.onPointerDown && this._handlePointerDown]
-		});
-	}
-
-	_registerEvents() {
-		this._teardownEvents = registerEvents(window, {
-			pointermove: [this.props.onPointerMove, { passive: true }],
-			pointerup: [this._handlePointerUp]
+			pointerdown: [this.props.onPointerDown && this._handlePointerDown],
+			pointerenter: [
+				this.props.onPointerEnter && this._handlePointerEnter,
+				{ passive: true }
+			]
 		});
 	}
 
@@ -38,13 +35,29 @@ export class Pointer extends Component {
 	}
 
 	_handlePointerDown = event => {
-		this._registerEvents();
+		this._teardownEvents = registerEvents(window, {
+			pointermove: [this.props.onPointerMove, { passive: true }],
+			pointerup: [this._handlePointerUp]
+		});
 		this.props.onPointerDown(event);
 	};
 
 	_handlePointerUp = event => {
 		this._unregisterEvents();
 		this.props.onPointerUp && this.props.onPointerUp(event);
+	};
+
+	_handlePointerEnter = event => {
+		this._teardownEvents = registerEvents(this.props.host, {
+			pointermove: [this.props.onPointerMove, { passive: true }],
+			pointerleave: [this._handlePointerLeave, { passive: true }]
+		});
+		this.props.onPointerEnter(event);
+	};
+
+	_handlePointerLeave = event => {
+		this._unregisterEvents();
+		this.props.onPointerLeave && this.props.onPointerLeave(event);
 	};
 
 	render() {

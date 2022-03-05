@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- `Pointer` component now support also `onPointerEnter` and `onPointerLeave`
+  handlers.
+
 ### Fixed
 
 - Fix polar chart 90° rotation.

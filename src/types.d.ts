@@ -238,12 +238,20 @@ export declare class PolarSector extends Component<PolarSectorProps> {
 
 export interface PointerProps {
 	host: HTMLElement;
-	onPointerDown?: { (event: PointerEvent): void };
 	onPointerMove?: { (event: PointerEvent): void };
+}
+
+export interface PointerActiveProps extends PointerProps {
+	onPointerDown?: { (event: PointerEvent): void };
 	onPointerUp?: { (event: PointerEvent): void };
 }
 
-export declare class Pointer extends Component<PointerProps> {
+export interface PointerHoverProps extends PointerProps {
+	onPointerEnter?: { (event: PointerEvent): void };
+	onPointerLeave?: { (event: PointerEvent): void };
+}
+
+export declare class Pointer extends Component<PointerActiveProps | PointerHoverProps> {
 	render(): ComponentChild;
 }
 
