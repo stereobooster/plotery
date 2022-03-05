@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-There are no changes yet.
+### Fixed
+
+- Fix added classes to polar axis (minor axis no longer have major class).
 
 
 ## [0.4.2] - 2020-08-17

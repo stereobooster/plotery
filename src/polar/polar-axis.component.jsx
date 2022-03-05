@@ -59,7 +59,7 @@ export class PolarAxis extends Component {
 					r={x[1]} />
 			));
 		}
-		return <path className="grid major" d={this._calcPath(this.center, values)} />;
+		return <path className={className} d={this._calcPath(this.center, values)} />;
 	}
 
 	_renderLabels(labels, ticks, positions) {
