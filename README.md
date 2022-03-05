@@ -5,7 +5,7 @@
 
 *Fast and lightweight plotting library for Preact without fuss.*
 
-![Screenshot of some Plotery graph](//bitbucket.org/shelacek/plotery/raw/master/screenshot.png)
+![Screenshot of some Plotery graph](https://bitbucket.org/shelacek/plotery/raw/master/screenshot.png)
 
 There are many plotting libraries in the wild. Many of them are enormous, all capable or poorly
 extensible. If there are some extensible lightweight library, then it is usually slow. **Plotery**
@@ -79,8 +79,9 @@ Polar chart components:
 Interaction components:
 
 - [BoxZoom component](#boxzoom-component)
-- [Pan component](#pan-component)
 - [WheelZoom component](#wheelzoom-component)
+- [Pan component](#pan-component)
+- [Tooltip component](#tooltip-component)
 
 
 ### Chart component
@@ -334,6 +335,19 @@ _handleLimits = limits => this.setState({ limits });
 | `onLimits` | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
 
 
+### WheelZoom component
+
+Enables zooming with wheel or touchpad.
+
+Take look at `BoxZoom` for example.
+
+#### Properties
+
+| Prop       | Type                            | Default | Description                                    |
+| ---------- | ------------------------------- | ------- | ---------------------------------------------- |
+| `onLimits` | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
+
+
 ### Pan component
 
 Enables moving with chart axis.
@@ -347,17 +361,62 @@ Take look at `BoxZoom` for example.
 | `onLimits` | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
 
 
-### WheelZoom component
+### Tooltip component
 
-Enables zooming with wheel or touchpad.
+Tooltip is helper component for displaying tooltips. It accepts single children that accepts cursor position and
+do actual drawing of tooltip. Library doesn't contains any ready-to-use tooltip display, because the requirements
+for tooltips vary wildly depending on the chart type, input data and preferences on the displaying itself. But it's
+not that hard to create your own tooltip:
 
-Take look at `BoxZoom` for example.
+```jsx
+function closest(points, position) {
+	let from = 0;
+	let until = points.length - 1;
+	while (true) {
+		const cursor = Math.floor((from + until) / 2);
+		if (cursor === from) {
+			const d1 = position - points[from][0];
+			const d2 = points[until][0] - position;
+			return points[d1 <= d2 ? from : until];
+		}
+		const found = points[cursor][0];
+		if (found === position) {
+			return points[cursor];
+		}
+		if (found > position) {
+			until = cursor;
+		}
+		else if (found < position) {
+			from = cursor;
+		}
+	}
+}
 
-#### Properties
+export const CartesianPointTooltip = ({ rect, axes, series, data, position }) => {
+	const points = data && (series ? data[series] : data);
+	if (!points || !points.length || !axes.x || !axes.y) {
+		return null;
+	}
+	const point = closest(points, axes.x.scale(position[0], true));
+	return (
+		<g className="tooltip-display">
+			<path d={`M${position[0]},0V${rect.height}`} />
+			<circle cx={axes.x.scale(point[0])} cy={axes.y.scale(point[1])} r="5" />
+		</g>
+	);
+};
+```
 
-| Prop       | Type                            | Default | Description                                    |
-| ---------- | ------------------------------- | ------- | ---------------------------------------------- |
-| `onLimits` | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
+...and use:
+
+```jsx
+<Chart data={data}>
+	<LinearAxis type="x" min={0} max={100} />
+	<LinearAxis type="y" min={0} max={100} />
+	<LinearLine />
+	<Tooltip><CartesianPointTooltip /></Tooltip>
+</Chart>
+```
 
 
 ## Low-level components
@@ -449,10 +508,16 @@ Define generic polar axis.
 
 ### Pointer component
 
-Helper component, that register `pointerdown` event to passed `host` element. After `pointerdown`
-event is raised, component register `pointermove` and `pointerup` to `window`.
+Helper component, that register `pointerdown` or `pointerenter` event to passed `host` element according passed
+handlers. After `pointerdown`/`pointerenter` event is raised, component register `pointermove`
+and `pointerup`/`pointerleave` to `window`.
 
 #### Properties
+
+Pointer component has 2 forms, depending on whether it should react to active pointer events (click) or hover events.
+Only one of onPointerDown/onPointerEnter and onPointerUp/onPointerLeave methods is currently supported.
+
+Active events form:
 
 | Prop            | Type                              | Default | Description                                      |
 | --------------- | --------------------------------- | ------- | ------------------------------------------------ |
@@ -460,6 +525,15 @@ event is raised, component register `pointermove` and `pointerup` to `window`.
 | `onPointerDown` | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointerdown` event. |
 | `onPointerMove` | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointermove` event. |
 | `onPointerUp`   | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointerup` event.   |
+
+Hover events form:
+
+| Prop             | Type                              | Default | Description                                       |
+| ---------------- | --------------------------------- | ------- | ------------------------------------------------- |
+| `host`           | `HTMLElement` (required)          |         | Element to registred `pointerenter` event.        |
+| `onPointerEnter` | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointerenter` event. |
+| `onPointerMove`  | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointermove` event.  |
+| `onPointerLeave` | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointerleave` event.    |
 
 
 ### Wheel component
@@ -509,6 +583,5 @@ Helper component, that register `wheel` event to passed `host` element.
 
 - Improve documentation
 - Target size ~ 5kiB (minified + gzip)
-- `Tooltip` component
 
 **PRs are welcome!**
