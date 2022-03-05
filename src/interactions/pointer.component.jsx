@@ -16,13 +16,13 @@ export class Pointer extends Component {
 
 	_registerStartupEvents() {
 		this._teardownStartupEvents = registerEvents(this.props.host, {
-			pointerdown: [this._handlePointerDown]
+			pointerdown: [this.props.onPointerDown && this._handlePointerDown]
 		});
 	}
 
 	_registerEvents() {
 		this._teardownEvents = registerEvents(window, {
-			pointermove: [this._handlePointerMove, { passive: true }],
+			pointermove: [this.props.onPointerMove, { passive: true }],
 			pointerup: [this._handlePointerUp]
 		});
 	}
@@ -39,11 +39,7 @@ export class Pointer extends Component {
 
 	_handlePointerDown = event => {
 		this._registerEvents();
-		this.props.onPointerDown && this.props.onPointerDown(event);
-	};
-
-	_handlePointerMove = event => {
-		this.props.onPointerMove && this.props.onPointerMove(event);
+		this.props.onPointerDown(event);
 	};
 
 	_handlePointerUp = event => {

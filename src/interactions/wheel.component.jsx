@@ -14,17 +14,13 @@ export class Wheel extends Component {
 
 	_registerEvents() {
 		this._teardownEvents = registerEvents(this.props.host, {
-			wheel: [this._handleWheel]
+			wheel: [this.props.onWheel]
 		});
 	}
 
 	_unregisterEvents() {
 		this._teardownEvents && this._teardownEvents();
 		this._teardownEvents = null;
-	}
-
-	_handleWheel = event => {
-		this.props.onWheel && this.props.onWheel(event);
 	}
 
 	render() {
