@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+There are no changes yet.
+
+
+## [0.5.0] - 2022-03-05
+
 ### Added
 
 - Add `Tooltip` helper component.
@@ -110,7 +115,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial version.
 
 
-[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v0.4.2
+[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v0.5.0
+[0.5.0]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.5.0..v0.4.2
 [0.4.2]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.4.2..v0.4.1
 [0.4.1]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.4.1..v0.4.0
 [0.4.0]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.4.0..v0.3.0
