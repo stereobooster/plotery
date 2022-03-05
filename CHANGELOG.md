@@ -8,7 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-There are no changes yet.
+### Changed
+
+- **BREAKING**: Preact 10 (aka PreactX) is now supported :-). Support for Preact 8
+  is dropped :-(.
 
 
 ## [0.5.0] - 2022-03-05
