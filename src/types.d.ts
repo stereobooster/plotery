@@ -265,19 +265,19 @@ export declare class BoxZoom extends Component<BoxZoomProps> {
 	render(): ComponentChild;
 }
 
-export interface PanProps extends Partial<ChartAttributes> {
-	onLimits?: { (limits?: number[]): void };
-}
-
-export declare class Pan extends Component<PanProps> {
-	render(): ComponentChild;
-}
-
 export interface WheelZoomProps extends Partial<ChartAttributes> {
 	onLimits?: { (limits?: number[]): void };
 }
 
 export declare class WheelZoom extends Component<WheelZoomProps> {
+	render(): ComponentChild;
+}
+
+export interface PanProps extends Partial<ChartAttributes> {
+	onLimits?: { (limits?: number[]): void };
+}
+
+export declare class Pan extends Component<PanProps> {
 	render(): ComponentChild;
 }
 

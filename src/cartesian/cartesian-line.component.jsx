@@ -3,7 +3,10 @@ import { linear } from '../math/interpolations/linear';
 
 export class CartesianLine extends Component {
 	_scale(points) {
-		return points.map(x => [this.props.axes.x.scale(x[0]), this.props.axes.y.scale(x[1])]);
+		return points.map(x => [
+			this.props.axes.x.scale(x[0]),
+			this.props.axes.y.scale(x[1])
+		]);
 	}
 
 	_closePath(points, path) {
@@ -24,7 +27,11 @@ export class CartesianLine extends Component {
 			this.props.class || className
 		].filter(x => x);
 		return (
-			<svg className={cls.join(' ')} width={rect.width} height={rect.height} {...attrs}>
+			<svg
+				className={cls.join(' ')}
+				width={rect.width}
+				height={rect.height}
+				{...attrs}>
 				{area && (
 					<path
 						key="area"

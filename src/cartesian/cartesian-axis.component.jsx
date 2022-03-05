@@ -13,11 +13,15 @@ export class CartesianAxis extends Component {
 	scale(value, reverse = false) {
 		const { rect, min, max, scaler } = this.props;
 		if (reverse) {
-			const normalized = this.type === 'x' ? value / rect.width : 1 - value / rect.height;
+			const normalized = this.type === 'x'
+				? value / rect.width
+				: 1 - value / rect.height;
 			return scaler(normalized, min, max, reverse);
 		}
 		const normalized = scaler(value, min, max, reverse);
-		return this.type === 'x' ? normalized * rect.width : (1 - normalized) * rect.height;
+		return this.type === 'x'
+			? normalized * rect.width
+			: (1 - normalized) * rect.height;
 	}
 
 	componentDidMount() {
@@ -36,7 +40,9 @@ export class CartesianAxis extends Component {
 
 	_calcPath(values) {
 		const { width, height } = this.props.rect;
-		const serializer = this.type === 'x' ? x => `M${x},0V${height}` : x => `M0,${x}H${width}`;
+		const serializer = this.type === 'x'
+			? x => `M${x},0V${height}`
+			: x => `M0,${x}H${width}`;
 		return values.map(serializer).join('');
 	}
 

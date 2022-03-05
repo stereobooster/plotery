@@ -3,7 +3,10 @@ import { pure } from '../utils/pure';
 
 export const BarLine = pure(class extends Component {
 	_scale(points) {
-		return points.map(x => [this.props.axes.x.scale(x[0]), this.props.axes.y.scale(x[1])]);
+		return points.map(x => [
+			this.props.axes.x.scale(x[0]),
+			this.props.axes.y.scale(x[1])
+		]);
 	}
 
 	_calcPath(points) {
