@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+- Fix polar chart 90° rotation.
 - Fix added classes to polar axis (minor axis no longer have major class).
 
 

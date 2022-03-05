@@ -9,7 +9,7 @@ export const PolarLine = pure(class extends Component {
 		return points.map(x => {
 			const r = axes.r.scale(x[0]);
 			const t = axes.t.scale(x[1]);
-			return [center.x + r * Math.cos(t), center.y + r * Math.sin(t)];
+			return [center.x + r * Math.sin(t), center.y - r * Math.cos(t)];
 		});
 	}
 

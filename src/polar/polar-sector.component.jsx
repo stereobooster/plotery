@@ -11,12 +11,12 @@ export const PolarSector = pure(class extends Component {
 			const t0 = axes.t.scale(x[0]);
 			const t1 = axes.t.scale(x[1]);
 			return [
-				[center.x + r0 * Math.cos(t0), center.y + r0 * Math.sin(t0)],
+				[center.x + r0 * Math.sin(t0), center.y - r0 * Math.cos(t0)],
 				[r0, r0],
-				[center.x + r0 * Math.cos(t1), center.y + r0 * Math.sin(t1)],
-				[center.x + r1 * Math.cos(t1), center.y + r1 * Math.sin(t1)],
+				[center.x + r0 * Math.sin(t1), center.y - r0 * Math.cos(t1)],
+				[center.x + r1 * Math.sin(t1), center.y - r1 * Math.cos(t1)],
 				[r1, r1],
-				[center.x + r1 * Math.cos(t0), center.y + r1 * Math.sin(t0)]
+				[center.x + r1 * Math.sin(t0), center.y - r1 * Math.cos(t0)]
 			];
 		});
 	}
