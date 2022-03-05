@@ -22,6 +22,7 @@ export { Wheel } from './interactions/wheel.component';
 export { BoxZoom } from './interactions/box-zoom.component';
 export { WheelZoom } from './interactions/wheel-zoom.component';
 export { Pan } from './interactions/pan.component';
+export { Tooltip } from './interactions/tooltip.component';
 
 export { linear } from './math/interpolations/linear';
 export { cardinal } from './math/interpolations/cardinal';

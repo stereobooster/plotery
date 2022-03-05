@@ -289,6 +289,12 @@ export declare class Pan extends Component<PanProps> {
 	render(): ComponentChild;
 }
 
+export interface TooltipProps extends Partial<ChartAttributes> { }
+
+export declare class Tooltip extends Component<TooltipProps> {
+	render(): ComponentChild;
+}
+
 export function linear(points: ChartSeriesData): string
 export function cardinal(points: ChartSeriesData, tension?: number): string;
 export function linearScaler(value: number, min: number, max: number, reverse?: boolean): number;
