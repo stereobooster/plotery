@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+There are no changes yet.
+
+
+## [1.0.0-alpha.2] - 2022-04-10
+
 ### Added
 
 - Added modifier props for `Pointer` and `Wheel` based components.
@@ -132,7 +137,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial version.
 
 
-[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v1.0.0-alpha.1
+[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v1.0.0-alpha.2
+[v1.0.0-alpha.2]: https://bitbucket.org/shelacek/formica/branches/compare/v1.0.0-alpha.2..v1.0.0-alpha.1
 [v1.0.0-alpha.1]: https://bitbucket.org/shelacek/formica/branches/compare/v1.0.0-alpha.1..v0.5.0
 [0.5.0]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.5.0..v0.4.2
 [0.4.2]: https://bitbucket.org/shelacek/plotery/branches/compare/v0.4.2..v0.4.1
