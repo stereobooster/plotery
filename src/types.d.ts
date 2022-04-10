@@ -23,7 +23,10 @@ export interface ChartAttributes {
 }
 
 export interface ChartProps {
+	class?: string;
+	className?: string;
 	data: ChartData;
+	[attrs: string]: any;
 }
 
 export declare class Chart extends Component<ChartProps> {
@@ -238,6 +241,7 @@ export declare class PolarSector extends Component<PolarSectorProps> {
 
 export interface PointerProps {
 	host: HTMLElement;
+	modifiers?: string;
 	onPointerMove?: { (event: PointerEvent): void };
 }
 
@@ -257,6 +261,7 @@ export declare class Pointer extends Component<PointerActiveProps | PointerHover
 
 export interface WheelProps {
 	host: HTMLElement;
+	modifiers?: string;
 	onWheel?: { (event: WheelEvent): void };
 }
 
@@ -266,6 +271,7 @@ export declare class Wheel extends Component<WheelProps> {
 
 export interface BoxZoomProps extends Partial<ChartAttributes> {
 	restrict?: 'x' | 'y';
+	modifiers?: string;
 	onLimits?: { (limits?: number[]): void };
 }
 
@@ -274,6 +280,7 @@ export declare class BoxZoom extends Component<BoxZoomProps> {
 }
 
 export interface WheelZoomProps extends Partial<ChartAttributes> {
+	modifiers?: string;
 	onLimits?: { (limits?: number[]): void };
 }
 
@@ -282,6 +289,7 @@ export declare class WheelZoom extends Component<WheelZoomProps> {
 }
 
 export interface PanProps extends Partial<ChartAttributes> {
+	modifiers?: string;
 	onLimits?: { (limits?: number[]): void };
 }
 
