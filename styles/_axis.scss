@@ -63,7 +63,7 @@ $plotery-minor-opacity: 0.12 !default;
 			font-size: 91%;
 			transform: translateY(1.5%) scale(1.1);
 
-			text:first-child {
+			text:where(:first-child) {
 				display: none;
 			}
 		}
