@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- **BREAKING**: `Surface` component no longer introduces `<g>` container.
 - CSS specificity for `.plot:nth-of-type(4n+i)` and `.plot .element:nth-of-type(4n+i)` is lowered.
 
 

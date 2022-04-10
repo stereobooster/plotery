@@ -1,4 +1,4 @@
-import { h, Component } from 'preact';
+import { Component } from 'preact';
 import { withProps } from './utils/with-props';
 import { shallowCompare } from './utils/shallow-compare';
 
@@ -22,10 +22,6 @@ export class Surface extends Component {
 	}));
 
 	render({ children }, { axes }) {
-		return (
-			<g>
-				{withProps(children, { updateAxis: this.updateAxis, axes: axes })}
-			</g>
-		);
+		return withProps(children, { updateAxis: this.updateAxis, axes: axes });
 	}
 }
