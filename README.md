@@ -90,9 +90,14 @@ Root component for all **Plotery** charts.
 
 #### Properties
 
-| Prop     | Type                   | Default | Description    |
-| -------- | ---------------------- | ------- | -------------- |
-| `data`   | `ChartData` (required) |         | Charts series. |
+| Prop     | Type                   | Default | Description                                                       |
+| -------- | ---------------------- | ------- | ----------------------------------------------------------------- |
+| `class`¹ | `string`               | none    | Space-separated list of the classes applied to plotery container. |
+| `data`   | `ChartData` (required) |         | Charts series.                                                    |
+
+*¹`class` and `className` are equivalent.*
+
+Any other passed property will be added to SVG container.
 
 
 ### Surface component
@@ -329,10 +334,14 @@ _handleLimits = limits => this.setState({ limits });
 
 #### Properties
 
-| Prop       | Type                            | Default | Description                                    |
-| ---------- | ------------------------------- | ------- | ---------------------------------------------- |
-| `restrict` | `'x' ⎮ 'y'`                     | none    | Optionally restrict to 'x' or 'y' axis.        |
-| `onLimits` | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
+| Prop        | Type                            | Default | Description                                    |
+| ----------- | ------------------------------- | ------- | ---------------------------------------------- |
+| `restrict`  | `'x' ⎮ 'y'`                     | none    | Optionally restrict to 'x' or 'y' axis.        |
+| `modifiers` | `string`                        |         | Required modifiers¹.                           |
+| `onLimits`  | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
+
+*¹Modifiers that must be pressed for the component pass the `wheel` events to `host` element. String
+of `ctrl`, `alt`, and `shift` joined with `+`.*
 
 
 ### WheelZoom component
@@ -343,9 +352,13 @@ Take look at `BoxZoom` for example.
 
 #### Properties
 
-| Prop       | Type                            | Default | Description                                    |
-| ---------- | ------------------------------- | ------- | ---------------------------------------------- |
-| `onLimits` | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
+| Prop        | Type                            | Default | Description                                    |
+| ----------- | ------------------------------- | ------- | ---------------------------------------------- |
+| `modifiers` | `string`                        |         | Required modifiers¹.                           |
+| `onLimits`  | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
+
+*¹Modifiers that must be pressed for the component pass the `wheel` events to `host` element. String
+of `ctrl`, `alt`, and `shift` joined with `+`.*
 
 
 ### Pan component
@@ -356,9 +369,13 @@ Take look at `BoxZoom` for example.
 
 #### Properties
 
-| Prop       | Type                            | Default | Description                                    |
-| ---------- | ------------------------------- | ------- | ---------------------------------------------- |
-| `onLimits` | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
+| Prop        | Type                            | Default | Description                                    |
+| ----------- | ------------------------------- | ------- | ---------------------------------------------- |
+| `modifiers` | `string`                        |         | Required modifiers¹.                           |
+| `onLimits`  | `{ (limits?: number[]): void }` | none    | Callback, that is called if range is selected. |
+
+*¹Modifiers that must be pressed for the component pass the `wheel` events to `host` element. String
+of `ctrl`, `alt`, and `shift` joined with `+`.*
 
 
 ### Tooltip component
@@ -522,6 +539,7 @@ Active events form:
 | Prop            | Type                              | Default | Description                                      |
 | --------------- | --------------------------------- | ------- | ------------------------------------------------ |
 | `host`          | `HTMLElement` (required)          |         | Element to registred `pointerdown` event.        |
+| `modifiers`     | `string`                          |         | Required modifiers¹.                             |
 | `onPointerDown` | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointerdown` event. |
 | `onPointerMove` | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointermove` event. |
 | `onPointerUp`   | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointerup` event.   |
@@ -531,9 +549,13 @@ Hover events form:
 | Prop             | Type                              | Default | Description                                       |
 | ---------------- | --------------------------------- | ------- | ------------------------------------------------- |
 | `host`           | `HTMLElement` (required)          |         | Element to registred `pointerenter` event.        |
+| `modifiers`      | `string`                          |         | Required modifiers¹.                              |
 | `onPointerEnter` | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointerenter` event. |
 | `onPointerMove`  | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointermove` event.  |
-| `onPointerLeave` | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointerleave` event.    |
+| `onPointerLeave` | `{ (event: PointerEvent): void }` | none    | Callback, that is called on `pointerleave` event. |
+
+*¹Modifiers that must be pressed for the component pass the `wheel` events to `host` element. String
+of `ctrl`, `alt`, and `shift` joined with `+`.*
 
 
 ### Wheel component
@@ -542,10 +564,14 @@ Helper component, that register `wheel` event to passed `host` element.
 
 #### Properties
 
-| Prop      | Type                            | Default | Description                                |
-| --------- | ------------------------------- | ------- | ------------------------------------------ |
-| `host`    | `HTMLElement` (required)        |         | Element to registred `wheel` event.        |
-| `onWheel` | `{ (event: WheelEvent): void }` | none    | Callback, that is called on `wheel` event. |
+| Prop        | Type                            | Default | Description                                |
+| ----------- | ------------------------------- | ------- | ------------------------------------------ |
+| `host`      | `HTMLElement` (required)        |         | Element to registred `wheel` event.        |
+| `modifiers` | `string`                        |         | Required modifiers¹.                       |
+| `onWheel`   | `{ (event: WheelEvent): void }` | none    | Callback, that is called on `wheel` event. |
+
+*¹Modifiers that must be pressed for the component pass the `wheel` events to `host` element. String
+of `ctrl`, `alt`, and `shift` joined with `+`.*
 
 
 ### Interpolation functions
