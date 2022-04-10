@@ -39,13 +39,13 @@ export class Pan extends Component {
 		});
 	}
 
-	render({ host }) {
+	render(props) {
 		return (
 			<Pointer
-				host={host}
 				onPointerDown={this._handlePointerDown}
 				onPointerMove={this._handlePointerMove}
-				onPointerUp={this._handlePointerUp} />
+				onPointerUp={this._handlePointerUp}
+				{...props} />
 		);
 	}
 }

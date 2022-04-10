@@ -21,7 +21,7 @@ export class WheelZoom extends Component {
 		event.preventDefault();
 	};
 
-	render({ host }) {
-		return (<Wheel host={host} onWheel={this._handleWheel} />);
+	render(props) {
+		return (<Wheel onWheel={this._handleWheel} {...props} />);
 	}
 }

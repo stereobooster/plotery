@@ -69,16 +69,16 @@ export class BoxZoom extends Component {
 		return `M${x1},${y1}H${x2}V${y2}H${x1}Z`;
 	}
 
-	render({ host }, { begin, end }) {
+	render(props, { begin, end }) {
 		return (
 			<g className="box-zoom">
 				{end && (<path className="backdrop" d={this._calcBackdropPath(begin, end)} />)}
 				{end && (<path className="outline" d={this._calcOutlinePath(begin, end)} />)}
 				<Pointer
-					host={host}
 					onPointerDown={this._handlePointerDown}
 					onPointerMove={this._handlePointerMove}
-					onPointerUp={this._handlePointerUp} />
+					onPointerUp={this._handlePointerUp}
+					{...props} />
 			</g>
 		);
 	}

@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Added modifier props for `Pointer` and `Wheel` based components.
+
 ### Changed
 
 - CSS specificity for `.plot:nth-of-type(4n+i)` and `.plot .element:nth-of-type(4n+i)` is lowered.

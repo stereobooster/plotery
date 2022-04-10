@@ -1,5 +1,6 @@
 import { Component } from 'preact';
 import { registerEvents } from '../utils/register-events';
+import { checkModifiers } from '../utils/check-modifiers';
 
 export class Pointer extends Component {
 	_teardownStartupEvents = null;
@@ -35,11 +36,13 @@ export class Pointer extends Component {
 	}
 
 	_handlePointerDown = event => {
-		this._teardownEvents = registerEvents(window, {
-			pointermove: [this.props.onPointerMove, { passive: true }],
-			pointerup: [this._handlePointerUp]
-		});
-		this.props.onPointerDown(event);
+		if (checkModifiers(event, this.props.modifiers)) {
+			this._teardownEvents = registerEvents(window, {
+				pointermove: [this.props.onPointerMove, { passive: true }],
+				pointerup: [this._handlePointerUp]
+			});
+			this.props.onPointerDown(event);
+		}
 	};
 
 	_handlePointerUp = event => {
@@ -48,11 +51,13 @@ export class Pointer extends Component {
 	};
 
 	_handlePointerEnter = event => {
-		this._teardownEvents = registerEvents(this.props.host, {
-			pointermove: [this.props.onPointerMove, { passive: true }],
-			pointerleave: [this._handlePointerLeave, { passive: true }]
-		});
-		this.props.onPointerEnter(event);
+		if (checkModifiers(event, this.props.modifiers)) {
+			this._teardownEvents = registerEvents(this.props.host, {
+				pointermove: [this.props.onPointerMove, { passive: true }],
+				pointerleave: [this._handlePointerLeave, { passive: true }]
+			});
+			this.props.onPointerEnter(event);
+		}
 	};
 
 	_handlePointerLeave = event => {
