@@ -30,12 +30,12 @@ export class Chart extends Component {
 		}
 	};
 
-	render({ children, className, data }, { rect }) {
+	render({ children, className, data, ...attrs }, { rect }) {
 		const host = this._ref;
 		const cls = ['plotery', this.props.class || className].filter(x => x);
 		return (
 			<div className={cls.join(' ')}>
-				<svg overflow="visible" ref={this._setRef}>
+				<svg overflow="visible" ref={this._setRef} {...attrs}>
 					<Surface>
 						{host && rect && withProps(children, { data, rect, host })}
 					</Surface>

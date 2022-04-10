@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Added modifier props for `Pointer` and `Wheel` based components.
 - Added class props to `Chart` component.
+- Pass `Chart` component's `...attrs` properties to SVG container.
 
 ### Changed
 
