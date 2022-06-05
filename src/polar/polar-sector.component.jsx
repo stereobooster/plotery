@@ -7,25 +7,28 @@ export const PolarSector = pure(class extends Component {
 		const center = axes.r.center;
 		const r0 = axes.r.scale(outer);
 		const r1 = axes.r.scale(inner);
-		return points.map(x => {
-			const t0 = axes.t.scale(x[0]);
-			const t1 = axes.t.scale(x[1]);
+		return points.map(p => {
+			const [t0, t1] = p.map(x => axes.t.scale(x)).sort((a, b) => a - b);
+			const t05 = (t0 + t1) / 2;
 			return [
 				[center.x + r0 * Math.sin(t0), center.y - r0 * Math.cos(t0)],
-				[r0, r0],
+				[center.x + r0 * Math.sin(t05), center.y - r0 * Math.cos(t05)],
 				[center.x + r0 * Math.sin(t1), center.y - r0 * Math.cos(t1)],
 				[center.x + r1 * Math.sin(t1), center.y - r1 * Math.cos(t1)],
-				[r1, r1],
-				[center.x + r1 * Math.sin(t0), center.y - r1 * Math.cos(t0)]
+				[center.x + r1 * Math.sin(t05), center.y - r1 * Math.cos(t05)],
+				[center.x + r1 * Math.sin(t0), center.y - r1 * Math.cos(t0)],
+				r0, r1, (t05 - t0) % Math.PI
 			];
 		});
 	}
 
 	_calcPath(x) {
 		return `M${x[0][0]},${x[0][1]}`
-			+ `A${x[1][0]},${x[1][1]},0,0,1,${x[2][0]},${x[2][1]}`
-			+ `L${x[3][0]},${x[3][1]}`
-			+ `A${x[4][0]},${x[4][1]},0,0,0,${x[5][0]},${x[5][1]}`
+			+ `A${x[6]},${x[6]},0,0,1,${x[1][0]},${x[1][1]}`
+			+ `A${x[6]},${x[6]},0,0,1,${x[2][0]},${x[2][1]}`
+			+ `${x[8] ? 'L' : 'ZM'}${x[3][0]},${x[3][1]}`
+			+ `A${x[7]},${x[7]},0,0,0,${x[4][0]},${x[4][1]}`
+			+ `A${x[7]},${x[7]},0,0,0,${x[5][0]},${x[5][1]}`
 			+ 'Z';
 	}
 

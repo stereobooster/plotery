@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-There are no changes yet.
+### Fixed
+
+- Fix deformed polar-sectors greater than 180°.
 
 
 ## [1.0.0-alpha.2] - 2022-04-10
