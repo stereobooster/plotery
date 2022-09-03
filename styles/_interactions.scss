@@ -10,16 +10,18 @@ $plotery-outline-opacity: 0.3 !default;
 	$outline-opacity: $plotery-outline-opacity
 ) {
 	.box-zoom {
+		fill: $backdrop-color;
+		stroke: $outline-color;
+		stroke-width: 1px;
+
 		.backdrop {
-			fill: $backdrop-color;
 			fill-opacity: $backdrop-opacity;
 			fill-rule: evenodd;
+			stroke: none;
 		}
 
 		.outline {
 			fill: none;
-			stroke: $outline-color;
-			stroke-width: 1px;
 			stroke-opacity: $outline-opacity;
 			shape-rendering: crispEdges;
 		}

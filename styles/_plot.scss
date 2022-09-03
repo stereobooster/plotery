@@ -10,22 +10,26 @@ $plotery-bars-width: 10px !default;
 	$bars-width: $plotery-bars-width
 ) {
 	.plot {
-		.line, .bars {
+		&.line, &.bar {
 			stroke: $line-color;
-			fill: none;
+			fill: $line-color;
 		}
 
-		.line {
+		&.line {
 			stroke-width: $line-width;
 		}
 
-		.area {
-			fill: $line-color;
-			fill-opacity: $area-opacity;
+		&.bar {
+			stroke-width: $bars-width;
 		}
 
-		.bars {
-			stroke-width: $bars-width;
+		.line, .bars {
+			fill: none;
+		}
+
+		.area {
+			stroke: none;
+			fill-opacity: $area-opacity;
 		}
 	}
 }
@@ -35,11 +39,8 @@ $plotery-bars-width: 10px !default;
 	$color: $plotery-line-color
 ) {
 	#{$selector} {
-		.line, .bars {
+		&.line, &.bar {
 			stroke: $color;
-		}
-
-		.area {
 			fill: $color;
 		}
 	}

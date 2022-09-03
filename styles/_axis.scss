@@ -10,9 +10,10 @@ $plotery-minor-opacity: 0.12 !default;
 	$minor-opacity: $plotery-minor-opacity
 ) {
 	.axis {
+		stroke-width: 1px;
+
 		.grid {
 			fill: none;
-			stroke-width: 1px;
 			stroke: $grid-color;
 			stroke-dasharray: 3px;
 			shape-rendering: crispEdges;
@@ -28,7 +29,6 @@ $plotery-minor-opacity: 0.12 !default;
 
 		.reference {
 			fill: none;
-			stroke-width: 1px;
 			stroke: $reference-color;
 			shape-rendering: crispEdges;
 		}

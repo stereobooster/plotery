@@ -8,7 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-There are no changes yet.
+### Changed
+
+- **BREAKING**: Apply `stroke`, `stroke-width` and `fill` properties
+  to containers instead to symbols itself. This enable overriding with `style`
+  attributes.
 
 
 ## [1.0.0-alpha.3] - 2022-08-28
