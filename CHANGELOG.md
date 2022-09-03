@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+There are no changes yet.
+
+
+## [1.0.0-alpha.4] - 2022-09-03
+
 ### Changed
 
 - **BREAKING**: Apply `stroke`, `stroke-width` and `fill` properties
@@ -149,7 +154,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial version.
 
 
-[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v1.0.0-alpha.3
+[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v1.0.0-alpha.4
+[v1.0.0-alpha.4]: https://bitbucket.org/shelacek/formica/branches/compare/v1.0.0-alpha.4..v1.0.0-alpha.3
 [v1.0.0-alpha.3]: https://bitbucket.org/shelacek/formica/branches/compare/v1.0.0-alpha.3..v1.0.0-alpha.2
 [v1.0.0-alpha.2]: https://bitbucket.org/shelacek/formica/branches/compare/v1.0.0-alpha.2..v1.0.0-alpha.1
 [v1.0.0-alpha.1]: https://bitbucket.org/shelacek/formica/branches/compare/v1.0.0-alpha.1..v0.5.0
