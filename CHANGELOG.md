@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - **BREAKING**: Apply `stroke`, `stroke-width` and `fill` properties
   to containers instead to symbols itself. This enable overriding with `style`
   attributes.
+- Added classes `.plotery .color-X` to easily set specific color to lines or bars.
 
 
 ## [1.0.0-alpha.3] - 2022-08-28
