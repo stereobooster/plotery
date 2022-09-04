@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-There are no changes yet.
+### Changed
+
+- Simplify README and added link to documentation.
 
 
 ## [1.0.0-alpha.4] - 2022-09-03
@@ -16,8 +18,7 @@ There are no changes yet.
 ### Changed
 
 - **BREAKING**: Apply `stroke`, `stroke-width` and `fill` properties
-  to containers instead to symbols itself. This enable overriding with `style`
-  attributes.
+  to containers instead to symbols itself. This enable overriding with `style` attributes.
 - Added classes `.plotery .color-X` to easily set specific color to lines or bars.
 
 
