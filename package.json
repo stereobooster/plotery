@@ -7,6 +7,11 @@
 	"typings": "dist/plotery.d.ts",
 	"style": "dist/css/plotery.css",
 	"scss": "dist/scss/plotery.scss",
+	"exports": {
+		"require": "./dist/plotery.js",
+		"import": "./dist/plotery.es.js",
+		"default": "./dist/plotery.es.js"
+	},
 	"scripts": {
 		"prebuild": "rm -rf dist",
 		"build:js": "rollup -c && cp src/types.d.ts dist/plotery.d.ts",
