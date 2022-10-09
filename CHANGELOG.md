@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+There are no changes yet.
+
+
+## [1.1.0] - 2022-10-09
+
 ### Added
 
 - Use CSS custom properties to parameterize a stylesheet.
@@ -162,7 +167,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial version.
 
 
-[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v1.0.0
+[Unreleased]: https://bitbucket.org/shelacek/plotery/branches/compare/master..v1.1.0
+[1.1.0]: https://bitbucket.org/shelacek/formica/branches/compare/v1.1.0..v1.0.0
 [1.0.0]: https://bitbucket.org/shelacek/formica/branches/compare/v1.0.0..v1.0.0-alpha.4
 [1.0.0-alpha.4]: https://bitbucket.org/shelacek/formica/branches/compare/v1.0.0-alpha.4..v1.0.0-alpha.3
 [1.0.0-alpha.3]: https://bitbucket.org/shelacek/formica/branches/compare/v1.0.0-alpha.3..v1.0.0-alpha.2
