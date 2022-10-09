@@ -1,20 +1,13 @@
-$plotery-line-color: #e02060 !default;
-$plotery-line-width: 2px !default;
-$plotery-area-opacity: 0.3 !default;
-$plotery-bars-width: 10px !default;
+$plotery-line-width: var(--plotery-line-width, 2px) !default;
+$plotery-area-opacity: var(--plotery-area-opacity, 0.3) !default;
+$plotery-bars-width: var(--plotery-bars-width, 10px) !default;
 
 @mixin plotery-plot(
-	$line-color: $plotery-line-color,
 	$line-width: $plotery-line-width,
 	$area-opacity: $plotery-area-opacity,
 	$bars-width: $plotery-bars-width
 ) {
 	.plot {
-		&.line, &.bar {
-			stroke: $line-color;
-			fill: $line-color;
-		}
-
 		&.line {
 			stroke-width: $line-width;
 		}

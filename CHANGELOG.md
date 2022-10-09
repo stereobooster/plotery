@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-There are no changes yet.
+### Added
+
+- Use CSS custom properties to parameterize a stylesheet.
 
 
 ## [1.0.0] - 2022-09-04

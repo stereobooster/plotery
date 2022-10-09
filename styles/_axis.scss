@@ -1,7 +1,7 @@
-$plotery-reference-color: black !default;
-$plotery-grid-color: black !default;
-$plotery-major-opacity: 0.25 !default;
-$plotery-minor-opacity: 0.12 !default;
+$plotery-reference-color: var(--plotery-reference-color, var(--plotery-base-color, black)) !default;
+$plotery-grid-color: var(--plotery-grid-color, var(--plotery-base-color, black)) !default;
+$plotery-major-opacity: var(--plotery-major-opacity, 0.25) !default;
+$plotery-minor-opacity: var(--plotery-minor-opacity, 0.12) !default;
 
 @mixin plotery-axis(
 	$reference-color: $plotery-reference-color,
@@ -57,7 +57,6 @@ $plotery-minor-opacity: 0.12 !default;
 			text-anchor: middle;
 		}
 
-		/* experimental: move labels of polar axes out of plot */
 		&.polar .labels {
 			transform-origin: 50% 50%;
 			font-size: 91%;

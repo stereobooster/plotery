@@ -1,14 +1,14 @@
 $plotery-include-classes: true !default;
-$plotery-margin: 50px !default;
+$plotery-margin: var(--plotery-margin, 50px) !default;
 $plotery-series-colors: (
-	#7098e0,
-	#8070d0,
-	#c070c0,
-	#d86868,
-	#d0a050,
-	#90c860,
-	#50c0a0,
-	#98a0a8,
+	var(--plotery-s1-color, #7098e0),
+	var(--plotery-s2-color, #8070d0),
+	var(--plotery-s3-color, #c070c0),
+	var(--plotery-s4-color, #d86868),
+	var(--plotery-s5-color, #d0a050),
+	var(--plotery-s6-color, #90c860),
+	var(--plotery-s7-color, #50c0a0),
+	var(--plotery-s8-color, #98a0a8),
 ) !default;
 
 @import 'axis';

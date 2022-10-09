@@ -1,7 +1,7 @@
-$plotery-backdrop-color: black !default;
-$plotery-backdrop-opacity: 0.05 !default;
-$plotery-outline-color: black !default;
-$plotery-outline-opacity: 0.3 !default;
+$plotery-backdrop-color: var(--plotery-backdrop-color, var(--plotery-base-color, black)) !default;
+$plotery-backdrop-opacity: var(--plotery-backdrop-opacity, 0.05) !default;
+$plotery-outline-color: var(--plotery-outline-color, var(--plotery-base-color, black)) !default;
+$plotery-outline-opacity: var(--plotery-outline-opacity, 0.3) !default;
 
 @mixin plotery-interactions(
 	$backdrop-color: $plotery-backdrop-color,
