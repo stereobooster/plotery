@@ -38,7 +38,7 @@
 	"bugs": {
 		"url": "https://bitbucket.org/shelacek/plotery/issues"
 	},
-	"homepage": "https://bitbucket.org/shelacek/plotery",
+	"homepage": "https://shelacek.bitbucket.io/plotery",
 	"devDependencies": {
 		"@babel/core": "^7.17.5",
 		"@babel/eslint-parser": "^7.17.0",
