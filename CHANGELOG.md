@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-There are no changes yet.
+### Fixed
+
+- Fixed CSS precedence for classes `.plotery .color-X`.
 
 
 ## [1.1.0] - 2022-10-09

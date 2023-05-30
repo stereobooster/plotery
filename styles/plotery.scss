@@ -23,15 +23,18 @@ $plotery-series-colors: (
 
 		@for $i from 0 to length($plotery-series-colors) {
 			@include plotery-plot-color(
-				'.color-#{$i + 1}',
-				nth($plotery-series-colors, $i + 1)
-			);
-			@include plotery-plot-color(
 				'.plot:where(:nth-of-type(4n+#{$i + 1}))',
 				nth($plotery-series-colors, $i + 1)
 			);
 			@include plotery-plot-element-color(
 				'.plot .element:where(:nth-of-type(4n+#{$i + 1}))',
+				nth($plotery-series-colors, $i + 1)
+			);
+		}
+
+		@for $i from 0 to length($plotery-series-colors) {
+			@include plotery-plot-color(
+				'.color-#{$i + 1}',
 				nth($plotery-series-colors, $i + 1)
 			);
 		}
