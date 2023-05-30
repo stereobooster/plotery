@@ -16,11 +16,11 @@
 		"prebuild": "rm -rf dist",
 		"build:js": "rollup -c && cp src/types.d.ts dist/plotery.d.ts",
 		"build:scss": "sass styles/plotery.scss dist/css/plotery.css && cp -r styles dist/scss",
-		"build": "yarn run build:js && yarn run build:scss",
-		"prepare": "yarn run build",
+		"build": "npm run build:js && npm run build:scss",
+		"prepare": "npm run build",
 		"lint:js": "eslint --ext .js --ext .jsx src",
 		"lint:scss": "sass-lint styles/*.scss --verbose",
-		"lint": "yarn run lint:js && yarn run lint:scss"
+		"lint": "npm run lint:js && npm run lint:scss"
 	},
 	"repository": {
 		"type": "git",
