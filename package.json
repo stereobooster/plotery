@@ -1,5 +1,5 @@
 {
-	"name": "@shelacek/plotery",
+	"name": "@stereobooster/plotery",
 	"version": "1.1.1",
 	"description": "Fast and lightweight plotting library for Preact without fuss.",
 	"type": "module",
@@ -25,7 +25,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://shelacek@bitbucket.org/shelacek/plotery.git"
+		"url": "https://github.com/stereobooster/plotery.git"
 	},
 	"keywords": [
 		"plot",
@@ -37,7 +37,7 @@
 	"author": "Ales Kurecka",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://bitbucket.org/shelacek/plotery/issues"
+		"url": "https://github.com/stereobooster/plotery/issues"
 	},
 	"homepage": "https://shelacek.bitbucket.io/plotery",
 	"devDependencies": {

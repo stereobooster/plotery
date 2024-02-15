@@ -1,5 +1,7 @@
 # Plotery
 
+**Fork** of https://bitbucket.org/shelacek/plotery/.
+
 [![npm](https://img.shields.io/npm/v/@shelacek/plotery.svg)](https://www.npmjs.com/package/@shelacek/plotery)
 [![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@shelacek/plotery.svg)](https://bundlephobia.com/result?p=@shelacek/plotery)
 
