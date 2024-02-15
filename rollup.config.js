@@ -27,7 +27,7 @@ export default {
 			format: 'cjs',
 			sourcemap: true
 		}, {
-			file: 'dist/plotery.es.js',
+			file: 'dist/plotery.mjs',
 			format: 'es',
 			sourcemap: true
 		}
